@@ -6,11 +6,12 @@ Projeto de webapp para a plataforma que utiliza da metodologia GROPES para avali
 
 ## Como iniciar o projeto
 
-No terminal, navegue até o diretório `iodev-ui/` e execute `ng serve` para iniciar o servidor de desenvolvimento local; então navegue para `http://localhost:4200/` e poderá visualizá-lo. O webapp vai reiniciar automaticamente em caso de mudanças no código fonte.
+No terminal, navegue até o diretório `iodev-ui/`. Instale as dependências necessárias com `npm install` e execute `ng serve` para iniciar o servidor de desenvolvimento local; então navegue para `http://localhost:4200/` e poderá visualizá-lo. O webapp vai reiniciar automaticamente em caso de mudanças no código fonte.
 
 ```bash
 git clone git@github.com:thiagojacinto/gropes-ui.git # git clone considerando uso de SSH. Altere o comando caso contrário.
 cd gropes-ui/iodev-ui/
+npm i
 ng serve
 ```
 
