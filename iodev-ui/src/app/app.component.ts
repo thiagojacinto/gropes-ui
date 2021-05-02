@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import surveyData from '../assets/survey-data.json';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ioDev';
+  data: string;
+
+  constructor() {
+    this.data = JSON.stringify(surveyData);
+  }
 }
