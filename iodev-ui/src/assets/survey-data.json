@@ -1,0 +1,227 @@
+{
+  "locale": "pt-br",
+  "title": {
+    "pt-br": "Questionário de mapeamento colaborativo de compatibilidade de habilidades com mercado de desenvolvimento de software"
+  },
+  "completedHtml": {
+    "pt-br": "<div>\n<h1>Parabéns por completar a pesquisa!</h1>\n<h3>Em breve seu resultado estará disponível na sua conta.</h3>\n<iframe src=\"https://giphy.com/embed/XreQmk7ETCak0\" width=\"480\" height=\"360\" frameBorder=\"0\" class=\"giphy-embed\" allowFullScreen></iframe><p><a href=\"https://giphy.com/gifs/retro-thumbs-up-XreQmk7ETCak0\">via GIPHY</a></p>\n</div>"
+  },
+  "pages": [
+    {
+      "name": "P1",
+      "elements": [
+        {
+          "type": "text",
+          "name": "question1",
+          "title": "Informe e o nome da organização para qual trabalhou"
+        },
+        {
+          "type": "multipletext",
+          "name": "question6",
+          "minWidth": "200px",
+          "title": "E esse trabalho foi realizado em que período? (MM/AAAA)",
+          "isRequired": true,
+          "items": [
+            {
+              "name": "trabalhou_desde",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "de"
+            },
+            {
+              "name": "trabalhou_ate",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "até"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "question3",
+          "title": "Descreva um pouco das atividades que desenvolveu:"
+        },
+        {
+          "type": "rating",
+          "name": "question4",
+          "minWidth": "200px",
+          "title": "Como você classifica as atividades desenvolvidas, entre 1 como \"Trivial\" e 5 como \"Desafiadora\":",
+          "isRequired": true,
+          "rateValues": [1, 2, 3, 4, 5],
+          "minRateDescription": "Trivial",
+          "maxRateDescription": "Desafiadora"
+        }
+      ],
+      "enableIf": "{question14} = 'doRepeat'",
+      "title": "Dê o primeiro passo para sua colocação!",
+      "description": "Início do questionário"
+    },
+    {
+      "name": "P2",
+      "elements": [
+        {
+          "type": "text",
+          "name": "question5",
+          "title": {
+            "pt-br": "O que utilizou durante esse período? (linguagens, frameworks, banco de dados, controle de versão, etc.)"
+          },
+          "description": {
+            "pt-br": "Você pode informar mais de uma, separando por vírgula"
+          },
+          "descriptionLocation": "underInput"
+        },
+        {
+          "type": "multipletext",
+          "name": "question2",
+          "state": "collapsed",
+          "minWidth": "200px",
+          "title": {
+            "default": "E esse trabalho foi realizado em que período? (MM/AAAA)",
+            "pt-br": "E utilizou essas tecnologias em que período? "
+          },
+          "isRequired": true,
+          "items": [
+            {
+              "name": "trabalhou_desde",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "de"
+            },
+            {
+              "name": "trabalhou_ate",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "até"
+            },
+            {
+              "name": "Sempre?",
+              "inputType": "range",
+              "maxLength": 0,
+              "size": 1,
+              "validators": [
+                {
+                  "type": "numeric",
+                  "minValue": 0,
+                  "maxValue": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "title": {
+        "pt-br": "Tecnologias incríveis!"
+      }
+    },
+    {
+      "name": "P3",
+      "elements": [
+        {
+          "type": "text",
+          "name": "question7",
+          "minWidth": "200px",
+          "title": {
+            "pt-br": "Neste campo, liste todas as tecnologias e ferramentas que você aprendeu ou estudou nos últimos 24 meses?"
+          },
+          "description": {
+            "pt-br": "Pode ter sido pelo trabalho, por estudo, em palestras, comunidades, etc.\n\nPara cada uma responda as questões abaixo:"
+          },
+          "placeHolder": {
+            "pt-br": "Nomes das tecnologias"
+          }
+        },
+        {
+          "type": "multipletext",
+          "name": "question8",
+          "state": "collapsed",
+          "minWidth": "200px",
+          "title": {
+            "default": "E esse trabalho foi realizado em que período? (MM/AAAA)",
+            "pt-br": "E estudou essas tecnologias em que período? "
+          },
+          "isRequired": true,
+          "items": [
+            {
+              "name": "estuda_desde",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "de"
+            },
+            {
+              "name": "estudou_até",
+              "isRequired": true,
+              "inputType": "date",
+              "title": "até"
+            },
+            {
+              "name": "Sempre?",
+              "inputType": "range",
+              "maxLength": 0,
+              "size": 1,
+              "validators": [
+                {
+                  "type": "numeric",
+                  "minValue": 0,
+                  "maxValue": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rating",
+          "name": "question9",
+          "title": {
+            "pt-br": "Em termos de aplicação prática, você classificaria como:"
+          },
+          "minRateDescription": {
+            "pt-br": "Nenhuma"
+          },
+          "maxRateDescription": {
+            "pt-br": "Total"
+          }
+        },
+        {
+          "type": "radiogroup",
+          "name": "question14",
+          "title": {
+            "pt-br": "Deseja adicionar uma outra experiência profissional?"
+          },
+          "choices": [
+            {
+              "value": "doRepeat",
+              "text": {
+                "pt-br": "SIM"
+              }
+            },
+            {
+              "value": "dontRepeat",
+              "text": {
+                "pt-br": "NÃO"
+              }
+            }
+          ],
+          "choicesOrder": "random",
+          "choicesEnableIf": "{question9} notempty"
+        }
+      ],
+      "title": {
+        "pt-br": "Demonstre seus interesses!"
+      }
+    }
+  ],
+  "showProgressBar": "top",
+  "progressBarType": "questions",
+  "startSurveyText": {
+    "pt-br": "Iniciar"
+  },
+  "pagePrevText": {
+    "pt-br": "Voltar"
+  },
+  "pageNextText": {
+    "pt-br": "Avançar"
+  },
+  "completeText": {
+    "pt-br": "Finalizar"
+  }
+}
