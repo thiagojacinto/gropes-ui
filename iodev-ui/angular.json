@@ -29,7 +29,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/primeng/resources/themes/arya-purple/theme.css",
+              "primeng/resources/themes/fluent-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
               "./node_modules/primeflex/primeflex.css"
