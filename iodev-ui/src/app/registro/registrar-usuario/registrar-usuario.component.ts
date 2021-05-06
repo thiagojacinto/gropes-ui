@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -7,6 +13,11 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./registrar-usuario.component.css'],
 })
 export class RegistrarUsuarioComponent implements OnInit {
+  forms: string[] = ['basico', 'profissional', 'pessoal'];
+  formVisivel: number = 0;
+  profAtivo: number = 0;
+  pessoalAtivo: number = 0;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
@@ -35,7 +46,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         ],
       }),
     }),
-    profissional: this.fb.array([
+    profissionais: this.fb.array([
       this.fb.group({
         empresa: ['', Validators.required],
         dataIni: ['', Validators.required],
@@ -57,7 +68,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         ]),
       }),
     ]),
-    pessoal: this.fb.array([
+    pessoais: this.fb.array([
       this.fb.group({
         tecnologia: ['', Validators.required],
         dificuldade: ['', Validators.required],
@@ -67,7 +78,72 @@ export class RegistrarUsuarioComponent implements OnInit {
       }),
     ]),
   });
-  
+
+  get profissionais() {
+    return this.registrarUsuario.get('profissionais') as FormArray;
+  }
+
+  addExpProfissional() {
+    this.profissionais.push(
+      this.fb.group({
+        empresa: ['', Validators.required],
+        dataIni: ['', Validators.required],
+        dataFim: ['', Validators.required],
+        trabalhoAtual: [false],
+        descricao: [
+          '',
+          Validators.compose([Validators.required, Validators.minLength(3)]),
+        ],
+        dificuldade: ['', Validators.required],
+        tecnologias: this.fb.array([
+          this.fb.group({
+            tecnologia: ['', Validators.required],
+            dificuldade: [''],
+            dataIni: ['', Validators.required],
+            dataFim: ['', Validators.required],
+            utilizaAtual: [false],
+          }),
+        ]),
+      })
+    );
+  }
+
+  get pessoais() {
+    return this.registrarUsuario.get('pessoais') as FormArray;
+  }
+
+  addExpPessoal() {
+    this.pessoais.push(
+      this.fb.group({
+        tecnologia: ['', Validators.required],
+        dificuldade: ['', Validators.required],
+        dataIni: ['', Validators.required],
+        dataFim: ['', Validators.required],
+        maisDe24Meses: [false],
+      })
+    );
+  }
+
+  isBasico() {
+    return this.forms[this.formVisivel] === this.forms[0];
+  }
+  isProfissional() {
+    return this.forms[this.formVisivel] === this.forms[1];
+  }
+  isPessoal() {
+    return this.forms[this.formVisivel] === this.forms[2];
+  }
+
+  avancarFormVisivel(): void {
+    if (this.formVisivel === 2) return this.onSubmit();
+    this.formVisivel++;
+    this.formVisivel = Math.min(this.formVisivel, 2);
+  }
+  voltarFormVisivel(): void {
+    this.formVisivel--;
+    this.formVisivel = Math.max(this.formVisivel, 0);
+  }
+
   onSubmit() {
     console.warn(this.registrarUsuario.value);
   }

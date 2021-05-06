@@ -1,97 +1,220 @@
-<div class="p-fluid p-grid">
+<div class="formulario__usuario p-fluid p-grid">
   <!-- progress-bar -->
 
   <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
-    <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
-      <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-          <input
-            type="text"
-            id="nome"
-            pInputText
-            formControlName="nome"
-            required
-          />
-          <label for="nome">Nome</label>
-        </span>
+
+    <ng-template [ngIf]="isBasico()">
+      <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-4">
+          <span class="p-float-label">
+            <input
+              type="text"
+              id="nome"
+              pInputText
+              formControlName="nome"
+              required
+            />
+            <label for="nome">Nome</label>
+          </span>
+        </div>
+
+        <div class="p-field p-col-12 p-md-4">
+          <span class="p-float-label">
+            <input
+              type="email"
+              id="email"
+              pInputText
+              formControlName="email"
+              required
+            />
+            <label for="email">E-mail</label>
+          </span>
+        </div>
+
+        <div class="p-field p-col-12 p-md-4">
+          <span class="p-float-label">
+            <input
+              type="password"
+              id="senha"
+              formControlName="senha"
+              required
+              pPassword
+            />
+            <label for="senha">Senha</label>
+          </span>
+        </div>
+
+        <div formGroupName="endereco" class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+              <input
+                type="text"
+                id="rua"
+                pInputText
+                formControlName="rua"
+                required
+              />
+              <label for="rua">Endereço</label>
+            </span>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+              <input
+                type="text"
+                id="numero"
+                pInputText
+                formControlName="numero"
+                required
+              />
+              <label for="numero">Número</label>
+            </span>
+          </div>
+          <div class="p-field p-col-6 p-md-6">
+            <span class="p-float-label">
+              <input
+                type="text"
+                id="complemento"
+                pInputText
+                formControlName="complemento"
+                required
+              />
+              <label for="complemento">Complemento</label>
+            </span>
+          </div>
+          <div class="p-field p-col-6 p-md-6">
+            <span class="p-float-label">
+              <input
+                type="text"
+                id="cep"
+                pInputText
+                formControlName="cep"
+                required
+              />
+              <label for="cep">CEP</label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="isProfissional()">
+      <div formArrayName="profissionais">
+        
+        <div *ngFor="let profissional of profissionais.controls; let i=index">
+
+          <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
+
+            <div class="p-field p-col-12">
+              <span class="p-float-label">
+                <input
+                type="text"
+                id="empresa"
+                pInputText
+                formControlName="empresa"
+                required
+                />
+                <label for="empresa">Empresa</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-5">
+              <span class="p-float-label">
+                <p-calendar id="dataIni" formControlName="dataIni"></p-calendar>
+                <label for="dataIni">Data Inicial</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-5">
+              <span class="p-float-label">
+                <p-calendar id="dataFim" formControlName="dataFim"></p-calendar>
+                <label for="dataFim">Data Final</label>
+              </span>
+            </div>
+            <div class="p-field p-col-3 p-md-2">
+              <p-inputSwitch id="trabalhoAtual" formControlName="trabalhoAtual"></p-inputSwitch>
+              <label for="trabalhoAtual"></label>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <p-rating formControlName="dificuldade"></p-rating>
+            </div>
+            <div class="p-field p-col-12">
+              <span class="p-float-label">
+                <input
+                type="text"
+                id="descricao"
+                pInputText
+                formControlName="descricao"
+                required
+                />
+                <label for="descricao">Descrição das atividades</label>
+              </span>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="isPessoal()">
+
+      <div formArrayName="pessoais">
+        
+        <div *ngFor="let pessoal of pessoais.controls; let i=index">
+
+          <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
+
+            <div class="p-field p-col-12 p-md-12">
+              <span class="p-float-label">
+                <input
+                type="text"
+                id="tecnologia"
+                pInputText
+                formControlName="tecnologia"
+                required
+                />
+                <label for="tecnologia">Tecnologia</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-5">
+              <span class="p-float-label">
+                <p-calendar id="dataIni" formControlName="dataIni"></p-calendar>
+                <label for="dataIni">Data Inicial</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-5">
+              <span class="p-float-label">
+                <p-calendar id="dataFim" formControlName="dataFim"></p-calendar>
+                <label for="dataFim">Data Final</label>
+              </span>
+            </div>
+            <div class="p-field p-col-3 p-md-2">
+              <p-inputSwitch formControlName="maisDe24Meses"></p-inputSwitch>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <p-rating formControlName="dificuldade"></p-rating>
+            </div>
+            
+          </div>
+        </div>
+
       </div>
 
-      <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-          <input
-            type="email"
-            id="email"
-            pInputText
-            formControlName="email"
-            required
-          />
-          <label for="email">E-mail</label>
-        </span>
-      </div>
-
-      <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-          <input
-            type="password"
-            id="senha"
-            pInputText
-            formControlName="senha"
-            required
-          />
-          <label for="senha">Senha</label>
-        </span>
-      </div>
-
-      <div formGroupName="endereco" class="p-fluid p-formgrid p-grid">
-        <div class="p-field p-col-12 p-md-6">
-          <span class="p-float-label">
-            <input
-              type="text"
-              id="rua"
-              pInputText
-              formControlName="rua"
-              required
-            />
-            <label for="rua">Endereço</label>
-          </span>
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-          <span class="p-float-label">
-            <input
-              type="text"
-              id="numero"
-              pInputText
-              formControlName="numero"
-              required
-            />
-            <label for="numero">Número</label>
-          </span>
-        </div>
-        <div class="p-field p-col-6 p-md-6">
-          <span class="p-float-label">
-            <input
-              type="text"
-              id="complemento"
-              pInputText
-              formControlName="complemento"
-              required
-            />
-            <label for="complemento">Complemento</label>
-          </span>
-        </div>
-        <div class="p-field p-col-6 p-md-6">
-          <span class="p-float-label">
-            <input
-              type="text"
-              id="cep"
-              pInputText
-              formControlName="cep"
-              required
-            />
-            <label for="cep">CEP</label>
-          </span>
-        </div>
-      </div>
-    </div>
+    </ng-template>
   </form>
+
+  <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" class="p-button-secondary p-button-lg" (click)="voltarFormVisivel()"></button>
+
+  <ng-template [ngIf]="isProfissional()">
+
+    <button pButton type="button" label="Adicionar Experiência Profissional" icon="pi pi-plus-circle" class="p-button-help p-button-lg" (click)="addExpProfissional()"></button>
+
+  </ng-template>
+
+  <ng-template [ngIf]="isPessoal()">
+
+    <button pButton type="button" label="Adicionar Experiência Pessoal" icon="pi pi-plus-circle" class="p-button-help p-button-lg" (click)="addExpPessoal()"></button>
+
+  </ng-template>
+    
+    <button pButton type="button" label="Avançar" icon="pi pi-check" class="p-button-success p-button-lg" (click)="avancarFormVisivel()"></button>
+  
 </div>
