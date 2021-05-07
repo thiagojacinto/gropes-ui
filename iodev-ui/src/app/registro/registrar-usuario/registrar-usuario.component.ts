@@ -144,6 +144,10 @@ export class RegistrarUsuarioComponent implements OnInit {
     this.formVisivel = Math.max(this.formVisivel, 0);
   }
 
+  atualizarProgresso(): number {
+    return 25 + this.formVisivel * 25;
+  }
+
   onSubmit() {
     console.warn(this.registrarUsuario.value);
   }
