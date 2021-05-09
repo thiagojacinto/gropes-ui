@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+import techList from 'src/assets/techList.json';
+
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
@@ -17,7 +19,19 @@ export class RegistrarUsuarioComponent implements OnInit {
   formVisivel: number = 0;
   profAtivo: number = 0;
   pessoalAtivo: number = 0;
-  opcoesClassificacao: Number[] = [1,2,3,4,5];
+  opcoesClassificacao: Number[] = [1, 2, 3, 4, 5];
+  todasTecnologias = techList;
+  listaTecnologias = [''];
+  sugestaoNaoEncontrada = "Ops... Tecnologia não encontrada"
+
+  filtrarTechList = (evento: any) => {
+    
+    this.listaTecnologias = this.todasTecnologias
+    .filter(tecnologia => {
+      return tecnologia.name.includes(evento.query);
+    })
+    .map(selecionada => selecionada.name);
+  };
 
   constructor(private fb: FormBuilder) {}
 

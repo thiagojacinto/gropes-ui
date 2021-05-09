@@ -1,8 +1,8 @@
 <div class="formulario__usuario">
   <div class="progress__bar">
     <p-progressBar
-    [showValue]="true"
-    [value]="atualizarProgresso()"
+      [showValue]="true"
+      [value]="atualizarProgresso()"
     ></p-progressBar>
   </div>
   <div class="p-fluid p-grid">
@@ -141,7 +141,9 @@
                 </span>
               </div>
               <div class="p-field p-col-6 p-md-3">
-                <label class="switch__label" for="trabalhoAtual">Trabalho atual?</label>
+                <label class="switch__label" for="trabalhoAtual"
+                  >Trabalho atual?</label
+                >
                 <p-inputSwitch
                   id="trabalhoAtual"
                   formControlName="trabalhoAtual"
@@ -177,13 +179,16 @@
                   <div [formGroupName]="j" class="p-fluid p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-12">
                       <span class="p-float-label">
-                        <input
-                          type="text"
+                        <p-autoComplete
                           id="tecnologia"
-                          pInputText
                           formControlName="tecnologia"
-                          required
-                        />
+                          [suggestions]="listaTecnologias"
+                          (completeMethod)="filtrarTechList($event)"
+                          [dropdown]="true"
+                          [forceSelection]="true"
+                          autocomplete
+                          [emptyMessage]="sugestaoNaoEncontrada"
+                        ></p-autoComplete>
                         <label for="tecnologia">Tecnologia</label>
                       </span>
                     </div>
@@ -206,7 +211,9 @@
                       </span>
                     </div>
                     <div class="p-field p-col-6 p-md-3">
-                      <label class="switch__label" for="utilizaAtual">Utiliza atualmente?</label>
+                      <label class="switch__label" for="utilizaAtual"
+                        >Utiliza atualmente?</label
+                      >
                       <p-inputSwitch
                         formControlName="utilizaAtual"
                       ></p-inputSwitch>
@@ -240,13 +247,23 @@
             <div [formGroupName]="k" class="p-fluid p-formgrid p-grid">
               <div class="p-field p-col-12 p-md-12">
                 <span class="p-float-label">
-                  <input
+                  <!-- <input
                     type="text"
                     id="tecnologia"
                     pInputText
                     formControlName="tecnologia"
                     required
-                  />
+                  /> -->
+                  <p-autoComplete
+                    id="tecnologia"
+                    formControlName="tecnologia"
+                    [suggestions]="listaTecnologias"
+                    (completeMethod)="filtrarTechList($event)"
+                    [dropdown]="true"
+                    [forceSelection]="true"
+                    autocomplete
+                    [emptyMessage]="sugestaoNaoEncontrada"
+                  ></p-autoComplete>
                   <label for="tecnologia">Tecnologia</label>
                 </span>
               </div>
@@ -269,11 +286,16 @@
                 </span>
               </div>
               <div class="p-field p-col-6 p-md-3">
-                <label class="switch__label" for="maisDe24Meses">Há +24 meses?</label>
+                <label class="switch__label" for="maisDe24Meses"
+                  >Há +24 meses?</label
+                >
                 <p-inputSwitch formControlName="maisDe24Meses"></p-inputSwitch>
               </div>
               <div class="p-field p-col-3">
-                <p-selectButton [options]="opcoesClassificacao"  formControlName="aplicacaoPratica"></p-selectButton>
+                <p-selectButton
+                  [options]="opcoesClassificacao"
+                  formControlName="aplicacaoPratica"
+                ></p-selectButton>
               </div>
             </div>
           </div>

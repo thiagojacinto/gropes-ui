@@ -10,7 +10,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
-
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -29,7 +29,8 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     CalendarModule,
     InputSwitchModule,
     SelectButtonModule,
-    ProgressBarModule
+    ProgressBarModule,
+    AutoCompleteModule
   ],
   exports: [
     RegistrarUsuarioComponent
