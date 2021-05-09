@@ -20,108 +20,105 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registrarUsuario;
+  }
+
+  get basicoForm() {
+    return this.fb.group({
+    nome: [
+      '',
+      Validators.compose([Validators.required, Validators.minLength(2)]),
+    ],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    senha: [
+      '',
+      Validators.compose([Validators.required, Validators.minLength(8)]),
+    ],
+    endereco: this.fb.group({
+      rua: ['', Validators.required],
+      numero: ['', Validators.required],
+      complemento: [''],
+      cep: [
+        '',
+        Validators.compose([Validators.minLength(8), Validators.maxLength(8)]),
+      ],
+    }),
+  })};
+
+  get tecnologiaProfissionalForm() {
+    return this.fb.group({
+      tecnologia: ['', Validators.required],
+      dificuldade: [''],
+      dataIni: ['', Validators.required],
+      dataFim: ['', Validators.required],
+      utilizaAtual: [false],
+    });
+  }
+
+  get profissionalForm() {
+    return this.fb.group({
+    empresa: ['', Validators.required],
+    dataIni: ['', Validators.required],
+    dataFim: ['', Validators.required],
+    trabalhoAtual: [false],
+    descricao: [
+      '',
+      Validators.compose([Validators.required, Validators.minLength(3)]),
+    ],
+    dificuldade: ['', Validators.required],
+    tecnologias: this.fb.array([this.tecnologiaProfissionalForm]),
+  })};
+
+  get pessoalForm() {
+    return this.fb.group({
+    tecnologia: ['', Validators.required],
+    dificuldade: ['', Validators.required],
+    dataIni: ['', Validators.required],
+    dataFim: ['', Validators.required],
+    maisDe24Meses: [false],
+  })};
 
   registrarUsuario = this.fb.group({
-    basico: this.fb.group({
-      nome: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(2)]),
-      ],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      senha: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(8)]),
-      ],
-      endereco: this.fb.group({
-        rua: ['', Validators.required],
-        numero: ['', Validators.required],
-        complemento: [''],
-        cep: [
-          '',
-          Validators.compose([
-            Validators.minLength(8),
-            Validators.maxLength(8),
-          ]),
-        ],
-      }),
-    }),
-    profissionais: this.fb.array([
-      this.fb.group({
-        empresa: ['', Validators.required],
-        dataIni: ['', Validators.required],
-        dataFim: ['', Validators.required],
-        trabalhoAtual: [false],
-        descricao: [
-          '',
-          Validators.compose([Validators.required, Validators.minLength(3)]),
-        ],
-        dificuldade: ['', Validators.required],
-        tecnologias: this.fb.array([
-          this.fb.group({
-            tecnologia: ['', Validators.required],
-            dificuldade: [''],
-            dataIni: ['', Validators.required],
-            dataFim: ['', Validators.required],
-            utilizaAtual: [false],
-          }),
-        ]),
-      }),
-    ]),
-    pessoais: this.fb.array([
-      this.fb.group({
-        tecnologia: ['', Validators.required],
-        dificuldade: ['', Validators.required],
-        dataIni: ['', Validators.required],
-        dataFim: ['', Validators.required],
-        maisDe24Meses: [false],
-      }),
-    ]),
+    basico: this.basicoForm,
+    profissionais: this.fb.array([this.profissionalForm]),
+    pessoais: this.fb.array([this.pessoalForm]),
   });
 
-  get profissionais() {
-    return this.registrarUsuario.get('profissionais') as FormArray;
+  getProfissionaisControls() {
+    return (this.registrarUsuario.get('profissionais') as FormArray)['controls'];
+  }
+  getTecnologiasControls(profissionalForm: AbstractControl) {
+    return ((profissionalForm as FormGroup).get('tecnologias') as FormArray)['controls'];
+  }
+  getPessoaisControls() {
+    return (this.registrarUsuario.get('pessoais') as FormArray)['controls'];
   }
 
   addExpProfissional() {
-    this.profissionais.push(
-      this.fb.group({
-        empresa: ['', Validators.required],
-        dataIni: ['', Validators.required],
-        dataFim: ['', Validators.required],
-        trabalhoAtual: [false],
-        descricao: [
-          '',
-          Validators.compose([Validators.required, Validators.minLength(3)]),
-        ],
-        dificuldade: ['', Validators.required],
-        tecnologias: this.fb.array([
-          this.fb.group({
-            tecnologia: ['', Validators.required],
-            dificuldade: [''],
-            dataIni: ['', Validators.required],
-            dataFim: ['', Validators.required],
-            utilizaAtual: [false],
-          }),
-        ]),
-      })
-    );
+    (this.registrarUsuario.get('profissionais') as FormArray).push(this.profissionalForm);
   }
 
-  get pessoais() {
-    return this.registrarUsuario.get('pessoais') as FormArray;
+  removerExpProfissional(index: number) {
+    (this.registrarUsuario.get('profissionais') as FormArray).removeAt(index);
   }
-
+  
+  addTecnologiaProfissional(profissional: AbstractControl) {
+    ((profissional as FormGroup).get('tecnologias') as FormArray).push(this.tecnologiaProfissionalForm);
+    console.log(`[INFO] -- Log addTecnologiaProfissional()`);
+    
+  }
+  
+  removerTecnologiaProfissional(profissional: FormGroup, index: number) {
+    (profissional.get('tecnologias') as FormArray).removeAt(index);
+  }
+  
   addExpPessoal() {
-    this.pessoais.push(
-      this.fb.group({
-        tecnologia: ['', Validators.required],
-        dificuldade: ['', Validators.required],
-        dataIni: ['', Validators.required],
-        dataFim: ['', Validators.required],
-        maisDe24Meses: [false],
-      })
-    );
+    (this.registrarUsuario.get('pessoais') as FormArray).push(this.pessoalForm);
+  }
+
+  removerExpPessoal(index: number) {
+    (this.registrarUsuario.get('pessoais') as FormArray).removeAt(index);
   }
 
   isBasico() {
@@ -149,6 +146,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.warn(this.registrarUsuario.value);
+    console.warn(this.registrarUsuario.errors);
+    console.log(this.registrarUsuario.value);
   }
 }

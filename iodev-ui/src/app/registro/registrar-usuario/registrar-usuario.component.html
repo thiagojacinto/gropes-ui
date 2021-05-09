@@ -1,8 +1,9 @@
-<p-progressBar [showValue]="true" [value]="atualizarProgresso()"></p-progressBar>
+<p-progressBar
+  [showValue]="true"
+  [value]="atualizarProgresso()"
+></p-progressBar>
 <div class="formulario__usuario p-fluid p-grid">
-
   <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
-
     <ng-template [ngIf]="isBasico()">
       <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-4">
@@ -99,19 +100,18 @@
 
     <ng-template [ngIf]="isProfissional()">
       <div formArrayName="profissionais">
-        
-        <div *ngFor="let profissional of profissionais.controls; let i=index">
-
+        <div
+          *ngFor="let profissional of getProfissionaisControls(); let i = index"
+        >
           <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
-
             <div class="p-field p-col-12">
               <span class="p-float-label">
                 <input
-                type="text"
-                id="empresa"
-                pInputText
-                formControlName="empresa"
-                required
+                  type="text"
+                  id="empresa"
+                  pInputText
+                  formControlName="empresa"
+                  required
                 />
                 <label for="empresa">Empresa</label>
               </span>
@@ -129,7 +129,10 @@
               </span>
             </div>
             <div class="p-field p-col-3 p-md-2">
-              <p-inputSwitch id="trabalhoAtual" formControlName="trabalhoAtual"></p-inputSwitch>
+              <p-inputSwitch
+                id="trabalhoAtual"
+                formControlName="trabalhoAtual"
+              ></p-inputSwitch>
               <label for="trabalhoAtual"></label>
             </div>
             <div class="p-field p-col-12 p-md-6">
@@ -138,38 +141,91 @@
             <div class="p-field p-col-12">
               <span class="p-float-label">
                 <input
-                type="text"
-                id="descricao"
-                pInputText
-                formControlName="descricao"
-                required
+                  type="text"
+                  id="descricao"
+                  pInputText
+                  formControlName="descricao"
+                  required
                 />
                 <label for="descricao">Descrição das atividades</label>
               </span>
             </div>
-            
+
+            <div formArrayName="tecnologias">
+              <div
+                *ngFor="
+                  let tech of getTecnologiasControls(profissional);
+                  let j = index
+                "
+              >
+                <div [formGroupName]="j" class="p-fluid p-formgrid p-grid">
+                  <div class="p-field p-col-12 p-md-12">
+                    <span class="p-float-label">
+                      <input
+                        type="text"
+                        id="tecnologia"
+                        pInputText
+                        formControlName="tecnologia"
+                        required
+                      />
+                      <label for="tecnologia">Tecnologia</label>
+                    </span>
+                  </div>
+                  <div class="p-field p-col-6 p-md-5">
+                    <span class="p-float-label">
+                      <p-calendar
+                        id="dataIni"
+                        formControlName="dataIni"
+                      ></p-calendar>
+                      <label for="dataIni">Data Inicial</label>
+                    </span>
+                  </div>
+                  <div class="p-field p-col-6 p-md-5">
+                    <span class="p-float-label">
+                      <p-calendar
+                        id="dataFim"
+                        formControlName="dataFim"
+                      ></p-calendar>
+                      <label for="dataFim">Data Final</label>
+                    </span>
+                  </div>
+                  <div class="p-field p-col-3 p-md-2">
+                    <p-inputSwitch
+                      formControlName="utilizaAtual"
+                    ></p-inputSwitch>
+                  </div>
+                  <div class="p-field p-col-12 p-md-6">
+                    <p-rating formControlName="dificuldade"></p-rating>
+                  </div>
+                </div>
+
+                <button
+                  pButton
+                  type="button"
+                  label="Tecnologia"
+                  icon="pi pi-plus-circle"
+                  class="p-button-secondary p-button-sm"
+                  (click)="addTecnologiaProfissional(profissional)"
+                ></button>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </ng-template>
 
     <ng-template [ngIf]="isPessoal()">
-
       <div formArrayName="pessoais">
-        
-        <div *ngFor="let pessoal of pessoais.controls; let i=index">
-
-          <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
-
+        <div *ngFor="let pessoal of getPessoaisControls(); let k = index">
+          <div [formGroupName]="k" class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col-12 p-md-12">
               <span class="p-float-label">
                 <input
-                type="text"
-                id="tecnologia"
-                pInputText
-                formControlName="tecnologia"
-                required
+                  type="text"
+                  id="tecnologia"
+                  pInputText
+                  formControlName="tecnologia"
+                  required
                 />
                 <label for="tecnologia">Tecnologia</label>
               </span>
@@ -192,29 +248,49 @@
             <div class="p-field p-col-12 p-md-6">
               <p-rating formControlName="dificuldade"></p-rating>
             </div>
-            
           </div>
         </div>
-
       </div>
-
     </ng-template>
   </form>
 
-  <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" class="p-button-secondary p-button-lg" (click)="voltarFormVisivel()"></button>
+  <button
+    pButton
+    type="button"
+    label="Voltar"
+    icon="pi pi-arrow-left"
+    class="p-button-secondary p-button-lg"
+    (click)="voltarFormVisivel()"
+  ></button>
 
   <ng-template [ngIf]="isProfissional()">
-
-    <button pButton type="button" label="Adicionar Experiência Profissional" icon="pi pi-plus-circle" class="p-button-help p-button-lg" (click)="addExpProfissional()"></button>
-
+    <button
+      pButton
+      type="button"
+      label="Adicionar Experiência Profissional"
+      icon="pi pi-plus-circle"
+      class="p-button-help p-button-lg"
+      (click)="addExpProfissional()"
+    ></button>
   </ng-template>
 
   <ng-template [ngIf]="isPessoal()">
-
-    <button pButton type="button" label="Adicionar Experiência Pessoal" icon="pi pi-plus-circle" class="p-button-help p-button-lg" (click)="addExpPessoal()"></button>
-
+    <button
+      pButton
+      type="button"
+      label="Adicionar Experiência Pessoal"
+      icon="pi pi-plus-circle"
+      class="p-button-help p-button-lg"
+      (click)="addExpPessoal()"
+    ></button>
   </ng-template>
-    
-    <button pButton type="button" label="Avançar" icon="pi pi-check" class="p-button-success p-button-lg" (click)="avancarFormVisivel()"></button>
-  
+
+  <button
+    pButton
+    type="button"
+    label="Avançar"
+    icon="pi pi-check"
+    class="p-button-success p-button-lg"
+    (click)="avancarFormVisivel()"
+  ></button>
 </div>
