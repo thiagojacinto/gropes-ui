@@ -8,8 +8,9 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { RatingModule } from 'primeng/rating';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { SelectButtonModule } from 'primeng/selectbutton';
+
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -27,7 +28,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     ButtonModule,
     CalendarModule,
     InputSwitchModule,
-    RatingModule,
+    SelectButtonModule,
     ProgressBarModule
   ],
   exports: [

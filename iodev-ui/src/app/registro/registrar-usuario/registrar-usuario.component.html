@@ -1,8 +1,10 @@
 <div class="formulario__usuario">
-  <p-progressBar
+  <div class="progress__bar">
+    <p-progressBar
     [showValue]="true"
     [value]="atualizarProgresso()"
-  ></p-progressBar>
+    ></p-progressBar>
+  </div>
   <div class="p-fluid p-grid">
     <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
       <ng-template [ngIf]="isBasico()">
@@ -46,7 +48,7 @@
             </span>
           </div>
 
-          <div formGroupName="endereco" class="p-fluid p-formgrid p-grid">
+          <div formGroupName="endereco" class="p-field p-col p-grid">
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
@@ -138,15 +140,19 @@
                   <label for="dataFim">Data Final</label>
                 </span>
               </div>
-              <div class="p-field p-col-3 p-md-2">
+              <div class="p-field p-col-6 p-md-3">
+                <label class="switch__label" for="trabalhoAtual">Trabalho atual?</label>
                 <p-inputSwitch
                   id="trabalhoAtual"
                   formControlName="trabalhoAtual"
                 ></p-inputSwitch>
                 <label for="trabalhoAtual"></label>
               </div>
-              <div class="p-field p-col-12 p-md-6">
-                <p-rating formControlName="dificuldade"></p-rating>
+              <div class="p-field p-col-3">
+                <p-selectButton
+                  [options]="opcoesClassificacao"
+                  formControlName="dificuldade"
+                ></p-selectButton>
               </div>
               <div class="p-field p-col-12">
                 <span class="p-float-label">
@@ -199,13 +205,17 @@
                         <label for="dataFim">Data Final</label>
                       </span>
                     </div>
-                    <div class="p-field p-col-3 p-md-2">
+                    <div class="p-field p-col-6 p-md-3">
+                      <label class="switch__label" for="utilizaAtual">Utiliza atualmente?</label>
                       <p-inputSwitch
                         formControlName="utilizaAtual"
                       ></p-inputSwitch>
                     </div>
-                    <div class="p-field p-col-12 p-md-6">
-                      <p-rating formControlName="dificuldade"></p-rating>
+                    <div class="p-field p-col-3">
+                      <p-selectButton
+                        [options]="opcoesClassificacao"
+                        formControlName="frequenciaDeUso"
+                      ></p-selectButton>
                     </div>
                   </div>
 
@@ -258,11 +268,12 @@
                   <label for="dataFim">Data Final</label>
                 </span>
               </div>
-              <div class="p-field p-col-3 p-md-2">
+              <div class="p-field p-col-6 p-md-3">
+                <label class="switch__label" for="maisDe24Meses">Há +24 meses?</label>
                 <p-inputSwitch formControlName="maisDe24Meses"></p-inputSwitch>
               </div>
-              <div class="p-field p-col-12 p-md-6">
-                <p-rating formControlName="dificuldade"></p-rating>
+              <div class="p-field p-col-3">
+                <p-selectButton [options]="opcoesClassificacao"  formControlName="aplicacaoPratica"></p-selectButton>
               </div>
             </div>
           </div>
@@ -272,7 +283,7 @@
   </div>
 
   <div class="buttons__grid p-fluid p-grid">
-    <div class="p-col-12 p-md-4">
+    <div class="p-col-12 p-md-2">
       <button
         pButton
         type="button"
@@ -284,7 +295,7 @@
     </div>
 
     <ng-template [ngIf]="isProfissional()">
-      <div class="p-col-12 p-md-4">
+      <div class="p-col-12 p-md-6">
         <button
           pButton
           type="button"
@@ -297,7 +308,7 @@
     </ng-template>
 
     <ng-template [ngIf]="isPessoal()">
-      <div class="p-col-12 p-md-4">
+      <div class="p-col-12 p-md-6">
         <button
           pButton
           type="button"
@@ -309,7 +320,7 @@
       </div>
     </ng-template>
 
-    <div class="p-col">
+    <div class="p-col p-md-2">
       <button
         pButton
         type="button"
