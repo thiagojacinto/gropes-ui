@@ -1,0 +1,367 @@
+<div class="formulario__usuario">
+  <div class="progress__bar">
+    <p-progressBar
+      [showValue]="true"
+      [value]="atualizarProgresso()"
+    ></p-progressBar>
+  </div>
+  <div class="principal p-fluid p-grid">
+    <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
+      <ng-template [ngIf]="isBasico()">
+        <p-card class="p-m-1" header="experiência profissional" subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:" [ngStyle]="{'background-color':'var(--teal-100)'}">
+        <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-4">
+            <span class="p-float-label">
+              <input
+                type="text"
+                id="nome"
+                pInputText
+                formControlName="nome"
+                required
+              />
+              <label for="nome">Nome</label>
+            </span>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <span class="p-float-label">
+              <input
+                type="email"
+                id="email"
+                pInputText
+                formControlName="email"
+                required
+              />
+              <label for="email">E-mail</label>
+            </span>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <span class="p-float-label">
+              <input
+                type="password"
+                id="senha"
+                formControlName="senha"
+                required
+                pPassword
+              />
+              <label for="senha">Senha</label>
+            </span>
+          </div>
+
+          <div formGroupName="endereco" class="p-field p-col p-grid">
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="rua"
+                  pInputText
+                  formControlName="rua"
+                  required
+                />
+                <label for="rua">Endereço</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="numero"
+                  pInputText
+                  formControlName="numero"
+                  required
+                />
+                <label for="numero">Número</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-6">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="complemento"
+                  pInputText
+                  formControlName="complemento"
+                  required
+                />
+                <label for="complemento">Complemento</label>
+              </span>
+            </div>
+            <div class="p-field p-col-6 p-md-6">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="cep"
+                  pInputText
+                  formControlName="cep"
+                  required
+                />
+                <label for="cep">CEP</label>
+              </span>
+            </div>
+          </div>
+        </div>
+        </p-card>
+      </ng-template>
+
+      <ng-template [ngIf]="isProfissional()">
+        <div formArrayName="profissionais">
+          <div
+            *ngFor="
+              let profissional of getProfissionaisControls();
+              let i = index
+            "
+          >
+          <p-card class="p-m-1" header="experiência profissional" subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:" [ngStyle]="{'background-color':'var(--teal-100)'}">
+            <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
+              <div class="p-field p-col-12">
+                <span class="p-float-label">
+                  <input
+                    type="text"
+                    id="empresa"
+                    pInputText
+                    formControlName="empresa"
+                    required
+                  />
+                  <label for="empresa">Empresa</label>
+                </span>
+              </div>
+              <div class="p-field p-col-6 p-md-5">
+                <span class="p-float-label">
+                  <p-calendar
+                    id="dataIni"
+                    formControlName="dataIni"
+                  ></p-calendar>
+                  <label for="dataIni">Data Inicial</label>
+                </span>
+              </div>
+              <div class="p-field p-col-6 p-md-5">
+                <span class="p-float-label">
+                  <p-calendar
+                    id="dataFim"
+                    formControlName="dataFim"
+                  ></p-calendar>
+                  <label for="dataFim">Data Final</label>
+                </span>
+              </div>
+              <div class="p-field p-col-6 p-md-3">
+                <label class="switch__label" for="trabalhoAtual"
+                  >Trabalho atual?</label
+                >
+                <p-inputSwitch
+                  id="trabalhoAtual"
+                  formControlName="trabalhoAtual"
+                ></p-inputSwitch>
+                <label for="trabalhoAtual"></label>
+              </div>
+              <div class="p-field p-col-3">
+                <p-selectButton
+                  [options]="opcoesClassificacao"
+                  formControlName="dificuldade"
+                ></p-selectButton>
+              </div>
+              <div class="p-field p-col-12">
+                <span class="p-float-label">
+                  <input
+                    type="text"
+                    id="descricao"
+                    pInputText
+                    formControlName="descricao"
+                    required
+                  />
+                  <label for="descricao">Descrição das atividades</label>
+                </span>
+              </div>
+
+              <div class="p-field" formArrayName="tecnologias">
+                <div
+                  *ngFor="
+                    let tech of getTecnologiasControls(profissional);
+                    let j = index
+                  "
+                >
+                <p-card class="p-m-1" header="tecnologias" subheader="O que utilizou no período? (linguagens, frameworks, etc)">
+                  <div [formGroupName]="j" class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12 p-md-12">
+                      <span class="p-float-label">
+                        <p-autoComplete
+                          id="tecnologia"
+                          formControlName="tecnologia"
+                          [suggestions]="listaTecnologias"
+                          (completeMethod)="filtrarTechList($event)"
+                          [dropdown]="true"
+                          [forceSelection]="true"
+                          autocomplete
+                          [emptyMessage]="sugestaoNaoEncontrada"
+                        ></p-autoComplete>
+                        <label for="tecnologia">Tecnologia</label>
+                      </span>
+                    </div>
+                    <div class="p-field p-col-6 p-md-5">
+                      <span class="p-float-label">
+                        <p-calendar
+                          id="dataIni"
+                          formControlName="dataIni"
+                        ></p-calendar>
+                        <label for="dataIni">Data Inicial</label>
+                      </span>
+                    </div>
+                    <div class="p-field p-col-6 p-md-5">
+                      <span class="p-float-label">
+                        <p-calendar
+                          id="dataFim"
+                          formControlName="dataFim"
+                        ></p-calendar>
+                        <label for="dataFim">Data Final</label>
+                      </span>
+                    </div>
+                    <div class="p-field p-col-6 p-md-3">
+                      <label class="switch__label" for="utilizaAtual"
+                        >Utiliza atualmente?</label
+                      >
+                      <p-inputSwitch
+                        formControlName="utilizaAtual"
+                      ></p-inputSwitch>
+                    </div>
+                    <div class="p-field p-col-3">
+                      <p-selectButton
+                        [options]="opcoesClassificacao"
+                        formControlName="frequenciaDeUso"
+                      ></p-selectButton>
+                    </div>
+                  </div>
+                  <div class="p-d-block p-mx-auto p-field p-col-5">
+                    <button
+                    pButton
+                    type="button"
+                    label="Tecnologia"
+                    icon="pi pi-plus-circle"
+                    class="p-button-secondary p-button-raised p-button-rounded"
+                    (click)="addTecnologiaProfissional(profissional)"
+                    ></button>
+                  </div>
+                  </p-card>
+                </div>
+              </div>
+            </div>
+            </p-card>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="isPessoal()">
+        <div formArrayName="pessoais">
+          <div *ngFor="let pessoal of getPessoaisControls(); let k = index">
+            <p-card class="p-m-1" header="experiência pessoal" subheader="Características pessoais e acadêmicas" [ngStyle]="{'background-color':'var(--orange-300)'}">
+              <div [formGroupName]="k" class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col-12 p-md-12">
+                  <span class="p-float-label">
+                    <!-- <input
+                    type="text"
+                    id="tecnologia"
+                    pInputText
+                    formControlName="tecnologia"
+                    required
+                  /> -->
+                    <p-autoComplete
+                      id="tecnologia"
+                      formControlName="tecnologia"
+                      [suggestions]="listaTecnologias"
+                      (completeMethod)="filtrarTechList($event)"
+                      [dropdown]="true"
+                      [forceSelection]="true"
+                      autocomplete
+                      [emptyMessage]="sugestaoNaoEncontrada"
+                    ></p-autoComplete>
+                    <label for="tecnologia">Tecnologia</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-5">
+                  <span class="p-float-label">
+                    <p-calendar
+                      id="dataIni"
+                      formControlName="dataIni"
+                    ></p-calendar>
+                    <label for="dataIni">Data Inicial</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-5">
+                  <span class="p-float-label">
+                    <p-calendar
+                      id="dataFim"
+                      formControlName="dataFim"
+                    ></p-calendar>
+                    <label for="dataFim">Data Final</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-3">
+                  <label class="switch__label" for="maisDe24Meses"
+                    >Há +24 meses?</label
+                  >
+                  <p-inputSwitch
+                    formControlName="maisDe24Meses"
+                  ></p-inputSwitch>
+                </div>
+                <div class="p-field p-col-3 p-col-m2">
+                  <p-selectButton
+                    [options]="opcoesClassificacao"
+                    formControlName="aplicacaoPratica"
+                  ></p-selectButton>
+                </div>
+              </div>
+            </p-card>
+            </div>
+        </div>
+      </ng-template>
+    </form>
+  </div>
+
+  <div class="buttons__grid p-fluid p-grid">
+    <div class="p-col-12 p-md-2">
+      <button
+        pButton
+        type="button"
+        label="Voltar"
+        icon="pi pi-arrow-left"
+        class="p-button-secondary p-button-outlined p-button"
+        (click)="voltarFormVisivel()"
+      ></button>
+    </div>
+
+    <ng-template [ngIf]="isProfissional()">
+      <div class="p-col-12 p-md-6">
+        <button
+          pButton
+          type="button"
+          label="Adicionar Experiência Profissional"
+          icon="pi pi-plus-circle"
+          class="p-button-help p-button"
+          (click)="addExpProfissional()"
+        ></button>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="isPessoal()">
+      <div class="p-col-12 p-md-6">
+        <button
+          pButton
+          type="button"
+          label="Adicionar Experiência Pessoal"
+          icon="pi pi-plus-circle"
+          class="p-button-help p-button"
+          (click)="addExpPessoal()"
+        ></button>
+      </div>
+    </ng-template>
+
+    <div class="p-col p-md-2">
+      <button
+        pButton
+        type="button"
+        label="Avançar"
+        icon="pi pi-check"
+        class="p-button-success p-button"
+        (click)="avancarFormVisivel()"
+      ></button>
+    </div>
+  </div>
+</div>
