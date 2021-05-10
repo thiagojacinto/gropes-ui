@@ -5,9 +5,10 @@
       [value]="atualizarProgresso()"
     ></p-progressBar>
   </div>
-  <div class="p-fluid p-grid">
+  <div class="principal p-fluid p-grid">
     <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
       <ng-template [ngIf]="isBasico()">
+        <p-card class="p-m-1" header="experiência profissional" subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:" [ngStyle]="{'background-color':'var(--teal-100)'}">
         <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
           <div class="p-field p-col-12 p-md-4">
             <span class="p-float-label">
@@ -99,6 +100,7 @@
             </div>
           </div>
         </div>
+        </p-card>
       </ng-template>
 
       <ng-template [ngIf]="isProfissional()">
@@ -109,6 +111,7 @@
               let i = index
             "
           >
+          <p-card class="p-m-1" header="experiência profissional" subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:" [ngStyle]="{'background-color':'var(--teal-100)'}">
             <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
               <div class="p-field p-col-12">
                 <span class="p-float-label">
@@ -176,6 +179,7 @@
                     let j = index
                   "
                 >
+                <p-card class="p-m-1" header="tecnologias" subheader="O que utilizou no período? (linguagens, frameworks, etc)">
                   <div [formGroupName]="j" class="p-fluid p-formgrid p-grid">
                     <div class="p-field p-col-12 p-md-12">
                       <span class="p-float-label">
@@ -225,18 +229,21 @@
                       ></p-selectButton>
                     </div>
                   </div>
-
-                  <button
+                  <div class="p-d-block p-mx-auto p-field p-col-5">
+                    <button
                     pButton
                     type="button"
                     label="Tecnologia"
                     icon="pi pi-plus-circle"
-                    class="p-button-secondary p-button-sm"
+                    class="p-button-secondary p-button-raised p-button-rounded"
                     (click)="addTecnologiaProfissional(profissional)"
-                  ></button>
+                    ></button>
+                  </div>
+                  </p-card>
                 </div>
               </div>
             </div>
+            </p-card>
           </div>
         </div>
       </ng-template>
@@ -244,61 +251,65 @@
       <ng-template [ngIf]="isPessoal()">
         <div formArrayName="pessoais">
           <div *ngFor="let pessoal of getPessoaisControls(); let k = index">
-            <div [formGroupName]="k" class="p-fluid p-formgrid p-grid">
-              <div class="p-field p-col-12 p-md-12">
-                <span class="p-float-label">
-                  <!-- <input
+            <p-card class="p-m-1" header="experiência pessoal" subheader="Características pessoais e acadêmicas" [ngStyle]="{'background-color':'var(--orange-300)'}">
+              <div [formGroupName]="k" class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col-12 p-md-12">
+                  <span class="p-float-label">
+                    <!-- <input
                     type="text"
                     id="tecnologia"
                     pInputText
                     formControlName="tecnologia"
                     required
                   /> -->
-                  <p-autoComplete
-                    id="tecnologia"
-                    formControlName="tecnologia"
-                    [suggestions]="listaTecnologias"
-                    (completeMethod)="filtrarTechList($event)"
-                    [dropdown]="true"
-                    [forceSelection]="true"
-                    autocomplete
-                    [emptyMessage]="sugestaoNaoEncontrada"
-                  ></p-autoComplete>
-                  <label for="tecnologia">Tecnologia</label>
-                </span>
+                    <p-autoComplete
+                      id="tecnologia"
+                      formControlName="tecnologia"
+                      [suggestions]="listaTecnologias"
+                      (completeMethod)="filtrarTechList($event)"
+                      [dropdown]="true"
+                      [forceSelection]="true"
+                      autocomplete
+                      [emptyMessage]="sugestaoNaoEncontrada"
+                    ></p-autoComplete>
+                    <label for="tecnologia">Tecnologia</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-5">
+                  <span class="p-float-label">
+                    <p-calendar
+                      id="dataIni"
+                      formControlName="dataIni"
+                    ></p-calendar>
+                    <label for="dataIni">Data Inicial</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-5">
+                  <span class="p-float-label">
+                    <p-calendar
+                      id="dataFim"
+                      formControlName="dataFim"
+                    ></p-calendar>
+                    <label for="dataFim">Data Final</label>
+                  </span>
+                </div>
+                <div class="p-field p-col-6 p-md-3">
+                  <label class="switch__label" for="maisDe24Meses"
+                    >Há +24 meses?</label
+                  >
+                  <p-inputSwitch
+                    formControlName="maisDe24Meses"
+                  ></p-inputSwitch>
+                </div>
+                <div class="p-field p-col-3 p-col-m2">
+                  <p-selectButton
+                    [options]="opcoesClassificacao"
+                    formControlName="aplicacaoPratica"
+                  ></p-selectButton>
+                </div>
               </div>
-              <div class="p-field p-col-6 p-md-5">
-                <span class="p-float-label">
-                  <p-calendar
-                    id="dataIni"
-                    formControlName="dataIni"
-                  ></p-calendar>
-                  <label for="dataIni">Data Inicial</label>
-                </span>
-              </div>
-              <div class="p-field p-col-6 p-md-5">
-                <span class="p-float-label">
-                  <p-calendar
-                    id="dataFim"
-                    formControlName="dataFim"
-                  ></p-calendar>
-                  <label for="dataFim">Data Final</label>
-                </span>
-              </div>
-              <div class="p-field p-col-6 p-md-3">
-                <label class="switch__label" for="maisDe24Meses"
-                  >Há +24 meses?</label
-                >
-                <p-inputSwitch formControlName="maisDe24Meses"></p-inputSwitch>
-              </div>
-              <div class="p-field p-col-3">
-                <p-selectButton
-                  [options]="opcoesClassificacao"
-                  formControlName="aplicacaoPratica"
-                ></p-selectButton>
-              </div>
+            </p-card>
             </div>
-          </div>
         </div>
       </ng-template>
     </form>

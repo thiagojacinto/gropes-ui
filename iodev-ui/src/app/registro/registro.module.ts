@@ -11,6 +11,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CardModule } from 'primeng/card';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -30,7 +31,8 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     InputSwitchModule,
     SelectButtonModule,
     ProgressBarModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    CardModule
   ],
   exports: [
     RegistrarUsuarioComponent
