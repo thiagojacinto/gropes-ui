@@ -137,8 +137,8 @@ export class RegistrarUsuarioComponent implements OnInit {
     console.log(`[INFO] -- Log addTecnologiaProfissional()`);
   }
 
-  removerTecnologiaProfissional(profissional: FormGroup, index: number) {
-    (profissional.get('tecnologias') as FormArray).removeAt(index);
+  removerTecnologiaProfissional(profissional: AbstractControl, index: number) {
+    ((profissional as FormGroup).get('tecnologias') as FormArray).removeAt(index);
   }
 
   addExpPessoal() {
