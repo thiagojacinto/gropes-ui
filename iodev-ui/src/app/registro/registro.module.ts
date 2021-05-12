@@ -12,6 +12,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CardModule } from 'primeng/card';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -32,7 +34,9 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     SelectButtonModule,
     ProgressBarModule,
     AutoCompleteModule,
-    CardModule
+    CardModule,
+    MessageModule,
+    MessagesModule
   ],
   exports: [
     RegistrarUsuarioComponent
