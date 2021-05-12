@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import techList from 'src/assets/techList.json';
 
@@ -13,6 +14,7 @@ import techList from 'src/assets/techList.json';
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
   styleUrls: ['./registrar-usuario.component.css'],
+  providers: [MessageService],
 })
 export class RegistrarUsuarioComponent implements OnInit {
   forms: string[] = ['basico', 'profissional', 'pessoal'];
@@ -22,18 +24,18 @@ export class RegistrarUsuarioComponent implements OnInit {
   opcoesClassificacao: Number[] = [1, 2, 3, 4, 5];
   todasTecnologias = techList;
   listaTecnologias = [''];
-  sugestaoNaoEncontrada = "Ops... Tecnologia não encontrada"
+  sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
+  avancarOuConcluir = this.isPessoal() ? 'Concluir' : 'Avançar';
 
   filtrarTechList = (evento: any) => {
-    
     this.listaTecnologias = this.todasTecnologias
-    .filter(tecnologia => {
-      return tecnologia.name.includes(evento.query);
-    })
-    .map(selecionada => selecionada.name);
+      .filter((tecnologia) => {
+        return tecnologia.name.includes(evento.query);
+      })
+      .map((selecionada) => selecionada.name);
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private msgService: MessageService) {}
 
   ngOnInit(): void {
     this.registrarUsuario;
@@ -138,7 +140,9 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   removerTecnologiaProfissional(profissional: AbstractControl, index: number) {
-    ((profissional as FormGroup).get('tecnologias') as FormArray).removeAt(index);
+    ((profissional as FormGroup).get('tecnologias') as FormArray).removeAt(
+      index
+    );
   }
 
   addExpPessoal() {
@@ -173,8 +177,26 @@ export class RegistrarUsuarioComponent implements OnInit {
     return 25 + this.formVisivel * 25;
   }
 
+  isDisabled() {
+    return this.registrarUsuario.invalid && this.isPessoal();
+  }
+
+  verificarErroNoPreenchimento() {
+    let { nome } = this.registrarUsuario.value.basico;
+    nome = nome ? ' ' + nome : '';
+    this.isDisabled()
+      ? this.msgService.add({
+          severity: 'warn',
+          summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
+        })
+      : this.msgService.add({
+          severity: 'success',
+          summary: 'Parabéns, ${nome}! Você é parte do ioDev agora',
+        });
+  }
+
   onSubmit() {
-    console.warn(this.registrarUsuario.errors);
     console.log(this.registrarUsuario.value);
+    this.verificarErroNoPreenchimento()
   }
 }

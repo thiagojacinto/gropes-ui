@@ -5,6 +5,9 @@
       [value]="atualizarProgresso()"
     ></p-progressBar>
   </div>
+
+  <p-messages></p-messages>
+
   <div class="principal p-fluid p-grid">
     <form [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
       <ng-template [ngIf]="isBasico()">
@@ -174,18 +177,21 @@
                   ></p-selectButton>
                 </div>
                 <ng-template [ngIf]="i != 0">
-                        <div class="p-field p-col-2">
-                          <button
-                            pButton
-                            type="button"
-                            icon="pi pi-trash"
-                            class="p-button-outlined p-button-raised p-button-rounded p-button-help"
-                            (click)="
-                              removerExpProfissional(i)
-                            "
-                          ></button>
-                        </div>
-                      </ng-template>
+                  <div class="p-field p-col-2">
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-trash"
+                      class="
+                        p-button-outlined
+                        p-button-raised
+                        p-button-rounded
+                        p-button-help
+                      "
+                      (click)="removerExpProfissional(i)"
+                    ></button>
+                  </div>
+                </ng-template>
                 <div class="p-field p-col-12">
                   <span class="p-float-label">
                     <input
@@ -270,7 +276,9 @@
                           type="button"
                           label="Tecnologia"
                           icon="pi pi-plus-circle"
-                          class="p-button-secondary p-button-raised p-button-rounded"
+                          class="
+                            p-button-secondary p-button-raised p-button-rounded
+                          "
                           (click)="addTecnologiaProfissional(profissional)"
                         ></button>
                       </div>
@@ -280,7 +288,12 @@
                             pButton
                             type="button"
                             icon="pi pi-trash"
-                            class="p-button-outlined p-button-raised p-button-rounded p-button-help"
+                            class="
+                              p-button-outlined
+                              p-button-raised
+                              p-button-rounded
+                              p-button-help
+                            "
                             (click)="
                               removerTecnologiaProfissional(profissional, j)
                             "
@@ -415,7 +428,7 @@
           type="button"
           label="Adicionar Experiência Pessoal"
           icon="pi pi-plus-circle"
-          class="p-button-help p-button"
+          class="p-button"
           (click)="addExpPessoal()"
           [ngStyle]="{ 'background-color': 'var(--orange-300)' }"
         ></button>
