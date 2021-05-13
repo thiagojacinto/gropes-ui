@@ -3,16 +3,20 @@ import {
   AbstractControl,
   FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import techList from 'src/assets/techList.json';
+import { RegistroService } from '../registro.service';
 
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
   styleUrls: ['./registrar-usuario.component.css'],
+  providers: [MessageService],
 })
 export class RegistrarUsuarioComponent implements OnInit {
   forms: string[] = ['basico', 'profissional', 'pessoal'];
@@ -22,18 +26,23 @@ export class RegistrarUsuarioComponent implements OnInit {
   opcoesClassificacao: Number[] = [1, 2, 3, 4, 5];
   todasTecnologias = techList;
   listaTecnologias = [''];
-  sugestaoNaoEncontrada = "Ops... Tecnologia não encontrada"
+  sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
+  avancarOuConcluir = this.isPessoal() ? 'Concluir' : 'Avançar';
+  dateHoje = new Date();
 
   filtrarTechList = (evento: any) => {
-    
     this.listaTecnologias = this.todasTecnologias
-    .filter(tecnologia => {
-      return tecnologia.name.includes(evento.query);
-    })
-    .map(selecionada => selecionada.name);
+      .filter((tecnologia) => {
+        return tecnologia.name.includes(evento.query);
+      })
+      .map((selecionada) => selecionada.name);
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private msgService: MessageService,
+    private registroService: RegistroService
+  ) {}
 
   ngOnInit(): void {
     this.registrarUsuario;
@@ -134,11 +143,12 @@ export class RegistrarUsuarioComponent implements OnInit {
     ((profissional as FormGroup).get('tecnologias') as FormArray).push(
       this.tecnologiaProfissionalForm
     );
-    console.log(`[INFO] -- Log addTecnologiaProfissional()`);
   }
 
-  removerTecnologiaProfissional(profissional: FormGroup, index: number) {
-    (profissional.get('tecnologias') as FormArray).removeAt(index);
+  removerTecnologiaProfissional(profissional: AbstractControl, index: number) {
+    ((profissional as FormGroup).get('tecnologias') as FormArray).removeAt(
+      index
+    );
   }
 
   addExpPessoal() {
@@ -147,6 +157,16 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   removerExpPessoal(index: number) {
     (this.registrarUsuario.get('pessoais') as FormArray).removeAt(index);
+  }
+
+  limiteDataExpPessoal(pessoal: AbstractControl): Date {
+    return ((pessoal as FormGroup).get('dataIni') as FormControl).value;
+  }
+  limiteDataExpProfissional(profissional: AbstractControl): Date {
+    return ((profissional as FormGroup).get('dataIni') as FormControl).value;
+  }
+  limiteDataTech(tecnologia: AbstractControl): Date {
+    return ((tecnologia as FormGroup).get('dataIni') as FormControl).value;
   }
 
   isBasico() {
@@ -173,8 +193,47 @@ export class RegistrarUsuarioComponent implements OnInit {
     return 25 + this.formVisivel * 25;
   }
 
+  isDisabled() {
+    return this.registrarUsuario.invalid && this.isPessoal();
+  }
+
+  verificarErroNoPreenchimento() {
+    let { nome } = this.registrarUsuario.value.basico;
+    nome = nome ? ' ' + nome : '';
+    this.isDisabled()
+      ? this.msgService.add({
+          severity: 'warn',
+          summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
+        })
+      : this.msgService.add({
+          severity: 'success',
+          summary: `Parabéns, ${nome}! Você é parte do ioDev agora`,
+        });
+    return this.isDisabled();
+  }
+
+  enviarRegistro() {
+    this.registroService
+      .registrarNovoUsuario(this.registrarUsuario.value)
+      .subscribe(
+        (res) => {
+          this.msgService.add({
+            severity: 'success',
+            summary: `Registro realizado com sucesso: ID = ${res.id}`,
+          });
+        },
+        (err) => {
+          this.msgService.add({
+            severity: 'error',
+            summary: 'Erro ao tentar cadastrar. Nosso suporte já foi alertado.',
+          });
+        }
+      );
+  }
+
   onSubmit() {
-    console.warn(this.registrarUsuario.errors);
     console.log(this.registrarUsuario.value);
+    this.verificarErroNoPreenchimento()
+    if (this.isDisabled()) this.enviarRegistro();
   }
 }

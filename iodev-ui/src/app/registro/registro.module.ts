@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { InputTextModule } from "primeng/inputtext";
 import { InputMaskModule } from 'primeng/inputmask';
@@ -12,6 +13,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CardModule } from 'primeng/card';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -23,6 +26,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     InputTextModule,
     InputMaskModule,
     PasswordModule,
@@ -32,7 +36,9 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     SelectButtonModule,
     ProgressBarModule,
     AutoCompleteModule,
-    CardModule
+    CardModule,
+    MessageModule,
+    MessagesModule
   ],
   exports: [
     RegistrarUsuarioComponent
