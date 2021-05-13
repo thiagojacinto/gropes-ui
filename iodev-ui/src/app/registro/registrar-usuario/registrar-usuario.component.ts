@@ -9,6 +9,7 @@ import {
 import { MessageService } from 'primeng/api';
 
 import techList from 'src/assets/techList.json';
+import { RegistroService } from '../registro.service';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -35,7 +36,11 @@ export class RegistrarUsuarioComponent implements OnInit {
       .map((selecionada) => selecionada.name);
   };
 
-  constructor(private fb: FormBuilder, private msgService: MessageService) {}
+  constructor(
+    private fb: FormBuilder,
+    private msgService: MessageService,
+    private registroService: RegistroService
+  ) {}
 
   ngOnInit(): void {
     this.registrarUsuario;
@@ -136,7 +141,6 @@ export class RegistrarUsuarioComponent implements OnInit {
     ((profissional as FormGroup).get('tecnologias') as FormArray).push(
       this.tecnologiaProfissionalForm
     );
-    console.log(`[INFO] -- Log addTecnologiaProfissional()`);
   }
 
   removerTecnologiaProfissional(profissional: AbstractControl, index: number) {
@@ -191,12 +195,32 @@ export class RegistrarUsuarioComponent implements OnInit {
         })
       : this.msgService.add({
           severity: 'success',
-          summary: 'Parabéns, ${nome}! Você é parte do ioDev agora',
+          summary: `Parabéns, ${nome}! Você é parte do ioDev agora`,
         });
+    return this.isDisabled();
+  }
+
+  enviarRegistro() {
+    this.registroService
+      .registrarNovoUsuario(this.registrarUsuario.value)
+      .subscribe(
+        (res) => {
+          this.msgService.add({
+            severity: 'success',
+            summary: `Registro realizado com sucesso: ID = ${res.id}`,
+          });
+        },
+        (err) => {
+          this.msgService.add({
+            severity: 'error',
+            summary: 'Erro ao tentar cadastrar. Nosso suporte já foi alertado.',
+          });
+        }
+      );
   }
 
   onSubmit() {
     console.log(this.registrarUsuario.value);
-    this.verificarErroNoPreenchimento()
+    if (this.verificarErroNoPreenchimento()) this.enviarRegistro();
   }
 }
