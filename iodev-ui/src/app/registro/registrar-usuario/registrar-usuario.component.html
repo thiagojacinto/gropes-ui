@@ -148,6 +148,7 @@
                       id="dataIni"
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
+                      [maxDate]="dateHoje"
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
@@ -158,11 +159,13 @@
                       id="dataFim"
                       formControlName="dataFim"
                       dateFormat="dd/mm/yy"
+                      [maxDate]="dateHoje"
+                      [minDate]="limiteDataExpProfissional(profissional)"
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6 p-md-3">
+                <div class="p-field p-col-5 p-md-3">
                   <label class="switch__label" for="trabalhoAtual"
                     >Trabalho atual?</label
                   >
@@ -245,6 +248,7 @@
                               id="dataIni"
                               formControlName="dataIni"
                               dateFormat="dd/mm/yy"
+                              [maxDate]="dateHoje"
                             ></p-calendar>
                             <label for="dataIni">Data Inicial</label>
                           </span>
@@ -255,11 +259,13 @@
                               id="dataFim"
                               formControlName="dataFim"
                               dateFormat="dd/mm/yy"
+                              [maxDate]="dateHoje"
+                              [minDate]="limiteDataTech(tech)"
                             ></p-calendar>
                             <label for="dataFim">Data Final</label>
                           </span>
                         </div>
-                        <div class="p-field p-col-6">
+                        <div class="p-field p-col-5">
                           <label class="switch__label" for="utilizaAtual"
                             >Utiliza atualmente?</label
                           >
@@ -366,6 +372,7 @@
                       id="dataIni"
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
+                      [maxDate]="dateHoje"
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
@@ -376,11 +383,13 @@
                       id="dataFim"
                       formControlName="dataFim"
                       dateFormat="dd/mm/yy"
+                      [maxDate]="dateHoje"
+                      [minDate]="limiteDataExpPessoal(pessoal)"
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6 p-md-3">
+                <div class="p-field p-col-5 p-md-3">
                   <label class="switch__label" for="maisDe24Meses"
                     >Há +24 meses?</label
                   >

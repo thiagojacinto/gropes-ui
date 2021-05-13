@@ -3,6 +3,7 @@ import {
   AbstractControl,
   FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -27,6 +28,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   listaTecnologias = [''];
   sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
   avancarOuConcluir = this.isPessoal() ? 'Concluir' : 'Avançar';
+  dateHoje = new Date();
 
   filtrarTechList = (evento: any) => {
     this.listaTecnologias = this.todasTecnologias
@@ -157,6 +159,16 @@ export class RegistrarUsuarioComponent implements OnInit {
     (this.registrarUsuario.get('pessoais') as FormArray).removeAt(index);
   }
 
+  limiteDataExpPessoal(pessoal: AbstractControl): Date {
+    return ((pessoal as FormGroup).get('dataIni') as FormControl).value;
+  }
+  limiteDataExpProfissional(profissional: AbstractControl): Date {
+    return ((profissional as FormGroup).get('dataIni') as FormControl).value;
+  }
+  limiteDataTech(tecnologia: AbstractControl): Date {
+    return ((tecnologia as FormGroup).get('dataIni') as FormControl).value;
+  }
+
   isBasico() {
     return this.forms[this.formVisivel] === this.forms[0];
   }
@@ -221,6 +233,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registrarUsuario.value);
-    if (this.verificarErroNoPreenchimento()) this.enviarRegistro();
+    this.verificarErroNoPreenchimento()
+    if (this.isDisabled()) this.enviarRegistro();
   }
 }
