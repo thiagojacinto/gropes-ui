@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -55,8 +56,8 @@ export class RegistrarUsuarioComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(2)]),
       ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      senha: [
-        '',
+      nascimento: ['', Validators.required],
+      senha: ['',
         Validators.compose([Validators.required, Validators.minLength(8)]),
       ],
       endereco: this.fb.group({
@@ -76,25 +77,25 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   get tecnologiaProfissionalForm() {
     return this.fb.group({
-      tecnologia: ['', Validators.required],
+      tecnologia: [''],
       frequenciaDeUso: [''],
-      dataIni: ['', Validators.required],
-      dataFim: ['', Validators.required],
+      dataIni: [''],
+      dataFim: [''],
       utilizaAtual: [false],
     });
   }
 
   get profissionalForm() {
     return this.fb.group({
-      empresa: ['', Validators.required],
-      dataIni: ['', Validators.required],
-      dataFim: ['', Validators.required],
+      empresa: [''],
+      dataIni: [''],
+      dataFim: [''],
       trabalhoAtual: [false],
       descricao: [
         '',
-        Validators.compose([Validators.required, Validators.minLength(3)]),
+        Validators.compose([Validators.minLength(3)]),
       ],
-      dificuldade: ['', Validators.required],
+      dificuldade: [''],
       tecnologias: this.fb.array([this.tecnologiaProfissionalForm]),
     });
   }
@@ -200,15 +201,11 @@ export class RegistrarUsuarioComponent implements OnInit {
   verificarErroNoPreenchimento() {
     let { nome } = this.registrarUsuario.value.basico;
     nome = nome ? ' ' + nome : '';
-    this.isDisabled()
-      ? this.msgService.add({
-          severity: 'warn',
-          summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
-        })
-      : this.msgService.add({
-          severity: 'success',
-          summary: `Parabéns, ${nome}! Você é parte do ioDev agora`,
-        });
+    this.isDisabled() &&
+      this.msgService.add({
+        severity: 'warn',
+        summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
+      });
     return this.isDisabled();
   }
 
@@ -233,7 +230,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registrarUsuario.value);
-    this.verificarErroNoPreenchimento()
-    if (this.isDisabled()) this.enviarRegistro();
+    this.verificarErroNoPreenchimento();
+    if (!this.isDisabled()) this.enviarRegistro();
   }
 }

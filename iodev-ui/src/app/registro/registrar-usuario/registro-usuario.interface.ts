@@ -3,6 +3,7 @@ export interface RegistroUsuario {
     nome: string;
     email: string;
     senha: string;
+    nascimento: string;
     endereco: {
       rua?: string;
       numero?: string;
@@ -13,8 +14,8 @@ export interface RegistroUsuario {
   profissionais: [
     {
       empresa: string;
-      dataIni: Date;
-      dataFim: Date;
+      dataIni: string;
+      dataFim: string;
       trabalhaAtual?: boolean;
       descricao?: string;
       dificuldade: number;
@@ -22,8 +23,8 @@ export interface RegistroUsuario {
         {
           tecnologia: string;
           frequenciaDeUso: number;
-          dataIni: Date;
-          dataFim: Date;
+          dataIni: string;
+          dataFim: string;
           utilizaAtual?: boolean;
         }
       ];
@@ -33,8 +34,8 @@ export interface RegistroUsuario {
     {
       tecnologia: string;
       aplicacaoPratica?: number;
-      dataIni: Date;
-      dataFim: Date;
+      dataIni: string;
+      dataFim: string;
       maisDe24Meses?: boolean;
     }
   ];

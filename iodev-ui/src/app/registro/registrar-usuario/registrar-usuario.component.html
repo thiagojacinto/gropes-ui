@@ -18,7 +18,7 @@
           [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
         >
           <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
-            <div class="p-field p-col-12 p-md-4">
+            <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
                   type="text"
@@ -31,7 +31,7 @@
               </span>
             </div>
 
-            <div class="p-field p-col-12 p-md-4">
+            <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
                   type="email"
@@ -43,8 +43,18 @@
                 <label for="email">E-mail</label>
               </span>
             </div>
-
-            <div class="p-field p-col-12 p-md-4">
+            <div class="p-field p-col-12 p-md-6">
+              <span class="p-float-label">
+                <p-calendar
+                  id="nascimento"
+                  formControlName="nascimento"
+                  dateFormat="dd/mm/yy"
+                  [maxDate]="dateHoje"
+                ></p-calendar>
+                <label for="nascimento">Data de Nascimento</label>
+              </span>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
                   type="password"
@@ -137,7 +147,6 @@
                       id="empresa"
                       pInputText
                       formControlName="empresa"
-                      required
                     />
                     <label for="empresa">Empresa</label>
                   </span>
@@ -204,7 +213,6 @@
                       id="descricao"
                       pInputText
                       formControlName="descricao"
-                      required
                     />
                     <label for="descricao">Descrição das atividades</label>
                   </span>
