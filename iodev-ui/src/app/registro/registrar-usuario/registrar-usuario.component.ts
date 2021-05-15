@@ -216,7 +216,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         (res) => {
           this.msgService.add({
             severity: 'success',
-            summary: `Registro realizado com sucesso: ID = ${res.id}`,
+            summary: `Registro realizado com sucesso: ID = ${res?.id}`,
           });
         },
         (err) => {

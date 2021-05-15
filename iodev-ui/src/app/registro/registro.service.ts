@@ -11,9 +11,10 @@ export class RegistroService {
 
   constructor(private http: HttpClient) { }
 
-  registrarNovoUsuario(registro: RegistroUsuario) {
+  registrarNovoUsuario(registro: any) {
     
     const baseUrl = environment.API + '/usuarios'
+    registro.id = Math.floor(Math.random() * 10000);
     return this.http.post<any>(baseUrl, registro); 
   }
 }
