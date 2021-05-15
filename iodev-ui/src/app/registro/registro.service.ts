@@ -13,8 +13,7 @@ export class RegistroService {
 
   registrarNovoUsuario(registro: RegistroUsuario) {
     
-    const baseUrl = environment.API + '/registro'
-
+    const baseUrl = environment.API + '/usuarios'
     return this.http.post<any>(baseUrl, registro); 
   }
 }
