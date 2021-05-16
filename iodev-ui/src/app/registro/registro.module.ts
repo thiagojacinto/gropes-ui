@@ -15,6 +15,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -38,7 +39,8 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     AutoCompleteModule,
     CardModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    TooltipModule
   ],
   exports: [
     RegistrarUsuarioComponent
