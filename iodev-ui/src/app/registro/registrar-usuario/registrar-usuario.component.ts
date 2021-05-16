@@ -30,6 +30,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
   avancarOuConcluir = this.isPessoal() ? 'Concluir' : 'Avançar';
   dateHoje = new Date();
+  trabalhoAutonomo = false;
 
   filtrarTechList = (evento: any) => {
     this.listaTecnologias = this.todasTecnologias
@@ -57,7 +58,8 @@ export class RegistrarUsuarioComponent implements OnInit {
       ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       nascimento: ['', Validators.required],
-      senha: ['',
+      senha: [
+        '',
         Validators.compose([Validators.required, Validators.minLength(8)]),
       ],
       endereco: this.fb.group({
@@ -87,14 +89,12 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   get profissionalForm() {
     return this.fb.group({
-      empresa: [''],
+      autonomo: [false],
+      empresa: [{ value: '', disabled: false }],
       dataIni: [''],
       dataFim: [''],
       trabalhoAtual: [false],
-      descricao: [
-        '',
-        Validators.compose([Validators.minLength(3)]),
-      ],
+      descricao: ['', Validators.compose([Validators.minLength(3)])],
       dificuldade: [''],
       tecnologias: this.fb.array([this.tecnologiaProfissionalForm]),
     });
@@ -168,6 +168,24 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
   limiteDataTech(tecnologia: AbstractControl): Date {
     return ((tecnologia as FormGroup).get('dataIni') as FormControl).value;
+  }
+
+  toggleDisabledEmpresa(evento: any, profissional: AbstractControl) {
+    const isAutonomo = evento.checked;
+    const inputEmpresa = (profissional as FormGroup).get(
+      'empresa'
+    ) as FormControl;
+
+    if (isAutonomo) {
+
+      inputEmpresa.disable({ onlySelf: true }); 
+      inputEmpresa.setValue('Autonomo');
+
+    } else {
+
+      inputEmpresa.enable({ onlySelf: true });
+      inputEmpresa.setValue(null);
+    }
   }
 
   isBasico() {
