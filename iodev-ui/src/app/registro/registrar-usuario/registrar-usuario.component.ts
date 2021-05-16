@@ -170,6 +170,21 @@ export class RegistrarUsuarioComponent implements OnInit {
     return ((tecnologia as FormGroup).get('dataIni') as FormControl).value;
   }
 
+  toggleDataAtual(evento: any, control: AbstractControl) {
+    const setDataAtual = evento.checked;
+    const inputDataFim = (control as FormGroup).get(
+      'dataFim'
+    ) as FormControl;
+
+    if (setDataAtual) {
+      inputDataFim.disable({ onlySelf: true });
+      inputDataFim.setValue(this.dateHoje);
+    } else {
+      inputDataFim.enable({ onlySelf: true });
+      inputDataFim.setValue(null);
+    }
+  }
+
   toggleDisabledEmpresa(evento: any, profissional: AbstractControl) {
     const isAutonomo = evento.checked;
     const inputEmpresa = (profissional as FormGroup).get(

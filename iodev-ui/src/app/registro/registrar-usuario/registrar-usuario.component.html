@@ -214,6 +214,7 @@
                   <p-inputSwitch
                     id="trabalhoAtual"
                     formControlName="trabalhoAtual"
+                    (onChange)="toggleDataAtual($event, profissional)"
                   ></p-inputSwitch>
                   <label for="trabalhoAtual"></label>
                 </div>
@@ -327,6 +328,7 @@
                           >
                           <p-inputSwitch
                             formControlName="utilizaAtual"
+                            (onChange)="toggleDataAtual($event, tech)"
                           ></p-inputSwitch>
                         </div>
                         <div class="p-field p-col">
