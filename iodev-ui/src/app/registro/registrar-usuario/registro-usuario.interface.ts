@@ -13,6 +13,7 @@ export interface RegistroUsuario {
   };
   profissionais: [
     {
+      autonomo: boolean,
       empresa: string;
       dataIni: string;
       dataFim: string;
