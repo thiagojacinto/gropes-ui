@@ -19,7 +19,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       
       # Setting Node version
       - name: Setup Node.js environment
@@ -31,6 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          cd iodev-ui/
           npm install
           npm run lint
           npm run ng -- deploy --base-href=/gropes-ui/ --name="DeployBOT" --email=yibor15635@o3live.com
