@@ -177,10 +177,8 @@ export class RegistrarUsuarioComponent implements OnInit {
     ) as FormControl;
 
     if (setDataAtual) {
-      inputDataFim.disable({ onlySelf: true });
       inputDataFim.setValue(this.dateHoje);
     } else {
-      inputDataFim.enable({ onlySelf: true });
       inputDataFim.setValue(null);
     }
   }
@@ -192,13 +190,9 @@ export class RegistrarUsuarioComponent implements OnInit {
     ) as FormControl;
 
     if (isAutonomo) {
-
-      inputEmpresa.disable({ onlySelf: true }); 
       inputEmpresa.setValue('Autonomo');
 
     } else {
-
-      inputEmpresa.enable({ onlySelf: true });
       inputEmpresa.setValue(null);
     }
   }
