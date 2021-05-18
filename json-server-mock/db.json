@@ -1,0 +1,118 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "basico": {
+        "nome": "",
+        "email": "",
+        "senha": "2222",
+        "nascimento": "2001-06-23T06:00:00.000Z",
+        "endereco": {
+          "rua": "",
+          "numero": "",
+          "complemento": "",
+          "cep": ""
+        }
+      },
+      "profissionais": [
+        {
+          "empresa": "Abc",
+          "dataIni": "2021-05-14T03:00:00.000Z",
+          "dataFim": "2021-05-22T03:00:00.000Z",
+          "trabalhoAtual": false,
+          "descricao": "Essas sao as descricoes",
+          "dificuldade": 4,
+          "tecnologias": [
+            {
+              "tecnologia": "",
+              "frequenciaDeUso": "",
+              "dataIni": "",
+              "dataFim": "",
+              "utilizaAtual": false
+            }
+          ]
+        },
+        {
+          "empresa": "Outra",
+          "dataIni": "2021-02-12T03:00:00.000Z",
+          "dataFim": "2021-05-07T03:00:00.000Z",
+          "trabalhoAtual": false,
+          "descricao": "Atividades",
+          "dificuldade": 4,
+          "tecnologias": [
+            {
+              "tecnologia": "",
+              "frequenciaDeUso": "",
+              "dataIni": "",
+              "dataFim": "",
+              "utilizaAtual": false
+            }
+          ]
+        }
+      ],
+      "pessoais": [
+        {
+          "tecnologia": "Java",
+          "dificuldade": 4,
+          "dataIni": "2021-05-04T03:00:00.000Z",
+          "dataFim": "2021-05-08T03:00:00.000Z"
+        },
+        {
+          "tecnologia": "Spring",
+          "dificuldade": 3,
+          "dataIni": "2021-05-11T03:00:00.000Z",
+          "dataFim": "2021-05-08T03:00:00.000Z"
+        },
+        {
+          "tecnologia": "Angular",
+          "aplicacaoPratica": 5,
+          "dataIni": "2021-05-05T03:00:00.000Z",
+          "dataFim": ""
+        }
+      ]
+    },
+    {
+      "basico": {
+        "nome": "Thiago",
+        "email": "tst@tst.test",
+        "nascimento": "2001-10-10T03:00:00.000Z",
+        "senha": "waekestpassword@",
+        "endereco": {
+          "rua": "Rua",
+          "numero": "123",
+          "complemento": "Comple apto bloco A",
+          "cep": "53000000"
+        }
+      },
+      "profissionais": [
+        {
+          "empresa": "ABC",
+          "dataIni": "2021-05-12T03:00:00.000Z",
+          "dataFim": "2021-05-15T03:00:00.000Z",
+          "trabalhoAtual": false,
+          "descricao": "A máquina do futuro",
+          "dificuldade": 4,
+          "tecnologias": [
+            {
+              "tecnologia": "JavaScript",
+              "frequenciaDeUso": 2,
+              "dataIni": "2021-05-10T03:00:00.000Z",
+              "dataFim": "2021-05-14T03:00:00.000Z",
+              "utilizaAtual": false
+            }
+          ]
+        }
+      ],
+      "pessoais": [
+        {
+          "tecnologia": "Java",
+          "aplicacaoPratica": 4,
+          "dataIni": "2021-05-02T03:00:00.000Z",
+          "dataFim": "2021-05-15T03:00:00.000Z",
+          "maisDe24Meses": false
+        }
+      ],
+      "id": 2
+    }
+  ]
+}

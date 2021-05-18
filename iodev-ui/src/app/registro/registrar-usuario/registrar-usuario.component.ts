@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -29,6 +30,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
   avancarOuConcluir = this.isPessoal() ? 'Concluir' : 'Avançar';
   dateHoje = new Date();
+  trabalhoAutonomo = false;
 
   filtrarTechList = (evento: any) => {
     this.listaTecnologias = this.todasTecnologias
@@ -55,6 +57,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(2)]),
       ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
+      nascimento: ['', Validators.required],
       senha: [
         '',
         Validators.compose([Validators.required, Validators.minLength(8)]),
@@ -76,25 +79,23 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   get tecnologiaProfissionalForm() {
     return this.fb.group({
-      tecnologia: ['', Validators.required],
+      tecnologia: [''],
       frequenciaDeUso: [''],
-      dataIni: ['', Validators.required],
-      dataFim: ['', Validators.required],
+      dataIni: [''],
+      dataFim: [''],
       utilizaAtual: [false],
     });
   }
 
   get profissionalForm() {
     return this.fb.group({
-      empresa: ['', Validators.required],
-      dataIni: ['', Validators.required],
-      dataFim: ['', Validators.required],
+      autonomo: [false],
+      empresa: [{ value: '', disabled: false }],
+      dataIni: [''],
+      dataFim: [''],
       trabalhoAtual: [false],
-      descricao: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)]),
-      ],
-      dificuldade: ['', Validators.required],
+      descricao: ['', Validators.compose([Validators.minLength(3)])],
+      dificuldade: [''],
       tecnologias: this.fb.array([this.tecnologiaProfissionalForm]),
     });
   }
@@ -169,6 +170,33 @@ export class RegistrarUsuarioComponent implements OnInit {
     return ((tecnologia as FormGroup).get('dataIni') as FormControl).value;
   }
 
+  toggleDataAtual(evento: any, control: AbstractControl) {
+    const setDataAtual = evento.checked;
+    const inputDataFim = (control as FormGroup).get(
+      'dataFim'
+    ) as FormControl;
+
+    if (setDataAtual) {
+      inputDataFim.setValue(this.dateHoje);
+    } else {
+      inputDataFim.setValue(null);
+    }
+  }
+
+  toggleDisabledEmpresa(evento: any, profissional: AbstractControl) {
+    const isAutonomo = evento.checked;
+    const inputEmpresa = (profissional as FormGroup).get(
+      'empresa'
+    ) as FormControl;
+
+    if (isAutonomo) {
+      inputEmpresa.setValue('Autonomo');
+
+    } else {
+      inputEmpresa.setValue(null);
+    }
+  }
+
   isBasico() {
     return this.forms[this.formVisivel] === this.forms[0];
   }
@@ -200,15 +228,11 @@ export class RegistrarUsuarioComponent implements OnInit {
   verificarErroNoPreenchimento() {
     let { nome } = this.registrarUsuario.value.basico;
     nome = nome ? ' ' + nome : '';
-    this.isDisabled()
-      ? this.msgService.add({
-          severity: 'warn',
-          summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
-        })
-      : this.msgService.add({
-          severity: 'success',
-          summary: `Parabéns, ${nome}! Você é parte do ioDev agora`,
-        });
+    this.isDisabled() &&
+      this.msgService.add({
+        severity: 'warn',
+        summary: `Ops${nome}, verifique se preencheu corretamente o registro.`,
+      });
     return this.isDisabled();
   }
 
@@ -219,7 +243,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         (res) => {
           this.msgService.add({
             severity: 'success',
-            summary: `Registro realizado com sucesso: ID = ${res.id}`,
+            summary: `Registro realizado com sucesso: ID = ${res?.id}`,
           });
         },
         (err) => {
@@ -233,7 +257,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registrarUsuario.value);
-    this.verificarErroNoPreenchimento()
-    if (this.isDisabled()) this.enviarRegistro();
+    this.verificarErroNoPreenchimento();
+    if (!this.isDisabled()) this.enviarRegistro();
   }
 }
