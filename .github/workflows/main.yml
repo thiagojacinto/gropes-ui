@@ -34,5 +34,5 @@ jobs:
         run: |
           cd iodev-ui/
           npm install
-          npm run lint
+          # npm run lint
           npm run ng -- deploy --base-href=/gropes-ui/ --name="DeployBOT" --email=yibor15635@o3live.com
