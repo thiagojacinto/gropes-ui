@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PrimeNGConfig } from "primeng/api";
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(private primengConfig: PrimeNGConfig) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.primengConfig.ripple = true;
   }
 }
