@@ -21,10 +21,10 @@ import { RegistroService } from '../registro.service';
 })
 export class RegistrarUsuarioComponent implements OnInit {
   forms: string[] = ['basico', 'profissional', 'pessoal'];
-  formVisivel: number = 0;
-  profAtivo: number = 0;
-  pessoalAtivo: number = 0;
-  opcoesClassificacao: Number[] = [1, 2, 3, 4, 5];
+  formVisivel = 0;
+  profAtivo = 0;
+  pessoalAtivo = 0;
+  opcoesClassificacao: number[] = [1, 2, 3, 4, 5];
   todasTecnologias = techList;
   listaTecnologias = [''];
   sugestaoNaoEncontrada = 'Ops... Tecnologia não encontrada';
@@ -35,20 +35,16 @@ export class RegistrarUsuarioComponent implements OnInit {
   filtrarTechList = (evento: any) => {
     this.listaTecnologias = this.todasTecnologias
       .filter((tecnologia) => {
-        return tecnologia.name.includes(evento.query);
+        return tecnologia.name.toLowerCase().includes((evento.query as string).toLowerCase());
       })
       .map((selecionada) => selecionada.name);
-  };
+  }
 
   constructor(
     private fb: FormBuilder,
     private msgService: MessageService,
     private registroService: RegistroService
   ) {}
-
-  ngOnInit(): void {
-    this.registrarUsuario;
-  }
 
   get basicoForm() {
     return this.fb.group({
@@ -117,17 +113,14 @@ export class RegistrarUsuarioComponent implements OnInit {
   });
 
   getProfissionaisControls() {
-    return (this.registrarUsuario.get('profissionais') as FormArray)[
-      'controls'
-    ];
+    return (this.registrarUsuario.get('profissionais') as FormArray).controls;
   }
   getTecnologiasControls(profissionalForm: AbstractControl) {
-    return ((profissionalForm as FormGroup).get('tecnologias') as FormArray)[
-      'controls'
-    ];
+    return ((profissionalForm as FormGroup).get('tecnologias') as FormArray)
+      .controls;
   }
   getPessoaisControls() {
-    return (this.registrarUsuario.get('pessoais') as FormArray)['controls'];
+    return (this.registrarUsuario.get('pessoais') as FormArray).controls;
   }
 
   addExpProfissional() {
@@ -172,9 +165,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   toggleDataAtual(evento: any, control: AbstractControl) {
     const setDataAtual = evento.checked;
-    const inputDataFim = (control as FormGroup).get(
-      'dataFim'
-    ) as FormControl;
+    const inputDataFim = (control as FormGroup).get('dataFim') as FormControl;
 
     if (setDataAtual) {
       inputDataFim.setValue(this.dateHoje);
@@ -191,7 +182,6 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     if (isAutonomo) {
       inputEmpresa.setValue('Autonomo');
-
     } else {
       inputEmpresa.setValue(null);
     }
@@ -208,7 +198,9 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   avancarFormVisivel(): void {
-    if (this.formVisivel === 2) return this.onSubmit();
+    if (this.formVisivel === 2) {
+      return this.onSubmit();
+    }
     this.formVisivel++;
     this.formVisivel = Math.min(this.formVisivel, 2);
   }
@@ -258,6 +250,12 @@ export class RegistrarUsuarioComponent implements OnInit {
   onSubmit() {
     console.log(this.registrarUsuario.value);
     this.verificarErroNoPreenchimento();
-    if (!this.isDisabled()) this.enviarRegistro();
+    if (!this.isDisabled()) {
+      this.enviarRegistro();
+    }
+  }
+
+  ngOnInit(): void {
+    this.registrarUsuario;
   }
 }

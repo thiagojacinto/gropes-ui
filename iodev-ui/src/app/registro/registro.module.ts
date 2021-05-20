@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { InputTextModule } from "primeng/inputtext";
+import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
@@ -20,9 +20,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
 @NgModule({
-  declarations: [
-    RegistrarUsuarioComponent
-  ],
+  declarations: [RegistrarUsuarioComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -40,10 +38,8 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     CardModule,
     MessageModule,
     MessagesModule,
-    TooltipModule
+    TooltipModule,
   ],
-  exports: [
-    RegistrarUsuarioComponent
-  ]
+  exports: [RegistrarUsuarioComponent],
 })
-export class RegistroModule { }
+export class RegistroModule {}
