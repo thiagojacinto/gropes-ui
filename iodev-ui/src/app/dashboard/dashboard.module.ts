@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
 
 import { DashboardUsuarioComponent } from './dashboard-usuario/dashboard-usuario.component';
 import { GraficoBarrasComponent } from './grafico-barras/grafico-barras.component';
@@ -15,7 +16,8 @@ import { GraficoBarrasComponent } from './grafico-barras/grafico-barras.componen
   imports: [
     CommonModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    ChartModule
   ],
   exports: [
     DashboardUsuarioComponent
