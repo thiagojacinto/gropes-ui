@@ -20,7 +20,8 @@ import { GraficoBarrasComponent } from './grafico-barras/grafico-barras.componen
     ChartModule
   ],
   exports: [
-    DashboardUsuarioComponent
+    DashboardUsuarioComponent,
+    GraficoBarrasComponent
   ]
 })
 export class DashboardModule { }
