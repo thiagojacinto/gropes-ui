@@ -9,7 +9,10 @@ export class DashboardUsuarioComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  maisInfo(): void {
+    console.log('Mais info sobre !');
   }
+
+  ngOnInit(): void {}
 
 }
