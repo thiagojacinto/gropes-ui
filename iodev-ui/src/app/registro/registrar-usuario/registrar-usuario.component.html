@@ -16,7 +16,7 @@
           header="Primeiro, nos conte sobre você..."
           [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
         >
-          <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
+          <div formGroupName="basico" class="p-fluid p-formgrid p-grid p-ai-center">
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
@@ -45,25 +45,35 @@
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <p-calendar
+                  [showIcon]="true"
                   id="nascimento"
                   formControlName="nascimento"
                   dateFormat="dd/mm/yy"
                   [maxDate]="dateHoje"
+                  [showButtonBar]="true"
+                  [monthNavigator]="true"
                 ></p-calendar>
                 <label for="nascimento">Data de Nascimento</label>
               </span>
             </div>
             <div class="p-field p-col-12 p-md-6">
-              <span class="p-float-label">
-                <input
-                  type="password"
-                  id="senha"
+                <p-password
+                  placeholder="Senha"
+                  inputId="password"
                   formControlName="senha"
                   required
-                  pPassword
-                />
-                <label for="senha">Senha</label>
-              </span>
+                  promptLabel="Digite uma senha segura"
+                >
+                  <ng-template pTemplate="footer">
+                    <p-divider></p-divider>
+                    <p class="p-mt-2">Sugestões:</p>
+                    <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 2">
+                      <li>Contendo 8 caracteres ou mais</li>
+                      <li>Ao menos uma letra maiúscula</li>
+                      <li>Ao menos um número</li>
+                    </ul>
+                  </ng-template>
+                </p-password>
             </div>
 
             <div formGroupName="endereco" class="p-field p-col p-grid">
@@ -152,7 +162,7 @@
                   <label class="switch__label" for="autonomo">
                     Profissional autônomo?
                   </label>
-                  <p-inputSwitch 
+                  <p-inputSwitch
                     formControlName="autonomo"
                     (onChange)="toggleDisabledEmpresa($event, profissional)"
                   ></p-inputSwitch>
@@ -493,9 +503,8 @@
           type="button"
           label="Adicionar Experiência Pessoal"
           icon="pi pi-plus-circle"
-          class="p-button"
+          class="p-button p-button-info"
           (click)="addExpPessoal()"
-          [ngStyle]="{ 'background-color': 'var(--orange-300)' }"
         ></button>
       </div>
     </ng-template>
@@ -506,7 +515,7 @@
         type="button"
         label="Avançar"
         icon="pi pi-check"
-        class="p-button"
+        class="p-button p-button-success"
         (click)="avancarFormVisivel()"
       ></button>
     </div>

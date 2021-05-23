@@ -16,6 +16,7 @@ import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { TooltipModule } from 'primeng/tooltip';
+import {DividerModule} from 'primeng/divider';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
@@ -39,6 +40,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     MessageModule,
     MessagesModule,
     TooltipModule,
+    DividerModule
   ],
   exports: [RegistrarUsuarioComponent],
 })
