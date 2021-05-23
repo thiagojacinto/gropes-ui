@@ -2,6 +2,9 @@ import { AfterViewInit, Directive } from '@angular/core';
 import { Calendar } from 'primeng/calendar';
 import Inputmask from 'inputmask';
 
+/**
+ * Reference: @adessilly comment on PrimeNG issue https://github.com/primefaces/primeng/issues/1426#issuecomment-770405847
+ */
 @Directive({
   selector: '[externalDataMask]',
 })
