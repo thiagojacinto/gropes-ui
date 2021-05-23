@@ -19,9 +19,10 @@ import { TooltipModule } from 'primeng/tooltip';
 import {DividerModule} from 'primeng/divider';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { DateMaskDirective } from '../utils/data-mask.directive';
 
 @NgModule({
-  declarations: [RegistrarUsuarioComponent],
+  declarations: [RegistrarUsuarioComponent, DateMaskDirective],
   imports: [
     CommonModule,
     FormsModule,

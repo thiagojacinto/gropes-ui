@@ -16,7 +16,10 @@
           header="Primeiro, nos conte sobre você..."
           [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
         >
-          <div formGroupName="basico" class="p-fluid p-formgrid p-grid p-ai-center">
+          <div
+            formGroupName="basico"
+            class="p-fluid p-formgrid p-grid p-ai-center"
+          >
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
@@ -45,35 +48,35 @@
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <p-calendar
-                  [showIcon]="true"
                   id="nascimento"
                   formControlName="nascimento"
                   dateFormat="dd/mm/yy"
                   [maxDate]="dateHoje"
-                  [showButtonBar]="true"
-                  [monthNavigator]="true"
+                  [showIcon]="true"
+                  externalDataMask
                 ></p-calendar>
                 <label for="nascimento">Data de Nascimento</label>
               </span>
             </div>
+            
             <div class="p-field p-col-12 p-md-6">
-                <p-password
-                  placeholder="Senha"
-                  inputId="password"
-                  formControlName="senha"
-                  required
-                  promptLabel="Digite uma senha segura"
-                >
-                  <ng-template pTemplate="footer">
-                    <p-divider></p-divider>
-                    <p class="p-mt-2">Sugestões:</p>
-                    <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 2">
-                      <li>Contendo 8 caracteres ou mais</li>
-                      <li>Ao menos uma letra maiúscula</li>
-                      <li>Ao menos um número</li>
-                    </ul>
-                  </ng-template>
-                </p-password>
+              <p-password
+                placeholder="Senha"
+                inputId="password"
+                formControlName="senha"
+                required
+                promptLabel="Digite uma senha segura"
+              >
+                <ng-template pTemplate="footer">
+                  <p-divider></p-divider>
+                  <p class="p-mt-2">Sugestões:</p>
+                  <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 2">
+                    <li>Contendo 8 caracteres ou mais</li>
+                    <li>Ao menos uma letra maiúscula</li>
+                    <li>Ao menos um número</li>
+                  </ul>
+                </ng-template>
+              </p-password>
             </div>
 
             <div formGroupName="endereco" class="p-field p-col p-grid">
@@ -201,6 +204,8 @@
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
@@ -213,6 +218,8 @@
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
                       [minDate]="limiteDataExpProfissional(profissional)"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
@@ -307,6 +314,8 @@
                               formControlName="dataIni"
                               dateFormat="dd/mm/yy"
                               [maxDate]="dateHoje"
+                              [showIcon]="true"
+                              externalDataMask
                             ></p-calendar>
                             <label for="dataIni">Data Inicial</label>
                           </span>
@@ -319,6 +328,8 @@
                               dateFormat="dd/mm/yy"
                               [maxDate]="dateHoje"
                               [minDate]="limiteDataTech(tech)"
+                              [showIcon]="true"
+                              externalDataMask
                             ></p-calendar>
                             <label for="dataFim">Data Final</label>
                           </span>
@@ -428,6 +439,8 @@
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
@@ -440,6 +453,8 @@
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
                       [minDate]="limiteDataExpPessoal(pessoal)"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
