@@ -14,7 +14,6 @@
         <p-card
           class="p-m-1"
           header="Primeiro, nos conte sobre você..."
-          [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
         >
           <div
             formGroupName="basico"
@@ -146,10 +145,9 @@
             class="p-col p-md-6 p-xl-4 p-mb-2"
           >
             <p-card
-              class="p-shadow-10"
+              class="p-shadow-10 blueish"
               header="experiência profissional"
               subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:"
-              [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
             >
               <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
                 <div
@@ -224,7 +222,7 @@
                     <label for="dataFim">Data Final</label>
                   </span>
                 </div>
-                <div class="p-field p-col-5 p-md-3">
+                <div class="p-field p-col-12 p-d-flex p-ai-center p-jc-evenly">
                   <label class="switch__label" for="trabalhoAtual"
                     >Trabalho atual?</label
                   >
@@ -235,14 +233,25 @@
                   ></p-inputSwitch>
                   <label for="trabalhoAtual"></label>
                 </div>
-                <div class="p-field p-col">
+                <div class="p-field p-col p-lg-6">
                   <label class="switch__label" for="dificuldade"
-                    >Dificuldade:</label
+                    >Quanto a dificuldade:</label
                   >
                   <p-selectButton
                     [options]="opcoesClassificacao"
                     formControlName="dificuldade"
                     pTooltip="1 para Trivial a 5 para Desafiadora"
+                    tooltipPosition="bottom"
+                  ></p-selectButton>
+                </div>
+                <div class="p-field p-col p-lg-6">
+                  <label class="switch__label" for="diversidade"
+                    >Quanto a repetividade:</label
+                  >
+                  <p-selectButton
+                    [options]="opcoesClassificacao"
+                    formControlName="diversidade"
+                    pTooltip="1 para Pouco Repetitiva a 5 para Muito Repetitiva"
                     tooltipPosition="bottom"
                   ></p-selectButton>
                 </div>
@@ -386,9 +395,9 @@
       </ng-template>
 
       <ng-template [ngIf]="isPessoal()">
-        <div formArrayName="pessoais" class="p-grid p-jc-around p-mb-2">
+        <div formArrayName="pessoais" class="p-grid p-d-flex p-flex-wrap p-jc-around">
           <div
-            class="p-col-12 p-md-6 p-xl-4"
+            class="p-col p-md-6"
             *ngFor="let pessoal of getPessoaisControls(); let k = index"
           >
             <p-card
@@ -469,7 +478,7 @@
                 </div> -->
                 <div class="p-field p-col">
                   <label class="" for="aplicacaoPratica"
-                    >Aplicação prática</label
+                    >Quanto a aplicação prática desta tecnologia?</label
                   >
                   <p-selectButton
                     [options]="opcoesClassificacao"
@@ -486,7 +495,7 @@
     </form>
   </div>
 
-  <div class="buttons__grid p-fluid p-grid p-d-flex p-jc-evenly">
+  <div class="fixado buttons__grid p-fluid p-grid p-d-flex p-jc-evenly">
     <div class="p-col-12 p-md-3">
       <button
         pButton
