@@ -182,8 +182,10 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     if (isAutonomo) {
       inputEmpresa.setValue('Autonomo');
+      inputEmpresa.disable({ onlySelf: true });
     } else {
       inputEmpresa.setValue(null);
+      inputEmpresa.enable({ onlySelf: true });
     }
   }
 
