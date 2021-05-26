@@ -400,8 +400,8 @@
       <ng-template [ngIf]="isPessoal()">
         <div formArrayName="pessoais" class="p-grid p-jc-around">
           <div
-            class="p-col-12"
-            *ngFor="let pessoal of getPessoaisControls(); let k = index"
+          *ngFor="let pessoal of getPessoaisControls(); let k = index"
+          class="p-col-12 p-mb-2"
           >
             <p-card
               header="experiência pessoal"
@@ -409,9 +409,9 @@
             >
               <div
                 [formGroupName]="k"
-                class="p-fluid p-formgrid p-grid p-ai-center"
+                class="p-col-12 p-formgrid p-grid p-ai-center"
               >
-                <div class="p-field p-col-10 p-lg-5">
+                <div class="p-field p-col-10 p-lg-4">
                   <span class="p-float-label">
                     <!-- <input
                     type="text"
@@ -444,7 +444,7 @@
                     ></button>
                   </div>
                 </ng-template>
-                <div class="p-field p-col-6 p-lg-3">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataIni"
@@ -457,7 +457,7 @@
                     <label for="dataIni">Data Inicial</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6 p-lg-3">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataFim"
