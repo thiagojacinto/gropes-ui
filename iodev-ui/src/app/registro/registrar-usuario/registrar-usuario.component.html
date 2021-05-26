@@ -154,9 +154,11 @@
                   class="
                     p-field
                     p-col-12
+                    p-lg-4
                     p-d-inline-flex
                     p-ai-center
                     p-jc-center
+                    p-jc-lg-end
                     p-flex-wrap
                   "
                 >
@@ -168,7 +170,7 @@
                     (onChange)="toggleDisabledEmpresa($event, profissional)"
                   ></p-inputSwitch>
                 </div>
-                <div class="p-field p-col-10">
+                <div class="p-field p-col-10 p-lg-3">
                   <span class="p-float-label">
                     <input
                       type="text"
@@ -180,7 +182,7 @@
                   </span>
                 </div>
                 <ng-template [ngIf]="i != 0">
-                  <div class="p-field p-col-2">
+                  <div class="p-field p-col-2 p-lg-1 p-ai-center p-jc-center">
                     <button
                       pButton
                       type="button"
@@ -195,7 +197,7 @@
                     ></button>
                   </div>
                 </ng-template>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataIni"
@@ -208,7 +210,7 @@
                     <label for="dataIni">Data Inicial</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataFim"
@@ -222,7 +224,7 @@
                     <label for="dataFim">Data Final</label>
                   </span>
                 </div>
-                <div class="p-field p-col-12 p-d-flex p-ai-center p-jc-evenly">
+                <div class="p-field p-col-12 p-lg-4 p-d-flex p-ai-center p-jc-center p-jc-lg-end">
                   <label class="switch__label" for="trabalhoAtual"
                     >Trabalho atual?</label
                   >
@@ -233,7 +235,7 @@
                   ></p-inputSwitch>
                   <label for="trabalhoAtual"></label>
                 </div>
-                <div class="p-field p-col p-lg-6">
+                <div class="p-field p-col p-lg-4">
                   <label class="switch__label" for="dificuldade"
                     >Quanto a dificuldade:</label
                   >
@@ -244,7 +246,7 @@
                     tooltipPosition="bottom"
                   ></p-selectButton>
                 </div>
-                <div class="p-field p-col p-lg-6">
+                <div class="p-field p-col p-lg-4">
                   <label class="switch__label" for="diversidade"
                     >Quanto a repetividade:</label
                   >
