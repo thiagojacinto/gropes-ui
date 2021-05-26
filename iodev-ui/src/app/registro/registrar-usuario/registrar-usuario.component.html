@@ -135,14 +135,14 @@
       <ng-template [ngIf]="isProfissional()">
         <div
           formArrayName="profissionais"
-          class="p-grid p-d-flex p-flex-wrap p-jc-around"
+          class="p-grid p-jc-around"
         >
           <div
             *ngFor="
               let profissional of getProfissionaisControls();
               let i = index
             "
-            class="p-col p-md-6 p-xl-4 p-mb-2"
+            class="p-col-12 p-mb-2"
           >
             <p-card
               class="p-shadow-10 blueish"
@@ -395,9 +395,9 @@
       </ng-template>
 
       <ng-template [ngIf]="isPessoal()">
-        <div formArrayName="pessoais" class="p-grid p-d-flex p-flex-wrap p-jc-around">
+        <div formArrayName="pessoais" class="p-grid p-jc-around">
           <div
-            class="p-col p-md-6"
+            class="p-col-12"
             *ngFor="let pessoal of getPessoaisControls(); let k = index"
           >
             <p-card
@@ -408,7 +408,7 @@
                 [formGroupName]="k"
                 class="p-fluid p-formgrid p-grid p-ai-center"
               >
-                <div class="p-field p-col-10">
+                <div class="p-field p-col-10 p-lg-5">
                   <span class="p-float-label">
                     <!-- <input
                     type="text"
@@ -431,7 +431,7 @@
                   </span>
                 </div>
                 <ng-template [ngIf]="k != 0">
-                  <div class="p-field p-col-2">
+                  <div class="p-field p-col-2 p-lg-1">
                     <button
                       pButton
                       type="button"
@@ -441,7 +441,7 @@
                     ></button>
                   </div>
                 </ng-template>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-3">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataIni"
@@ -454,7 +454,7 @@
                     <label for="dataIni">Data Inicial</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-3">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataFim"
@@ -476,7 +476,7 @@
                     formControlName="maisDe24Meses"
                   ></p-inputSwitch>
                 </div> -->
-                <div class="p-field p-col">
+                <div class="p-field p-col p-lg-3">
                   <label class="" for="aplicacaoPratica"
                     >Quanto a aplicação prática desta tecnologia?</label
                   >
