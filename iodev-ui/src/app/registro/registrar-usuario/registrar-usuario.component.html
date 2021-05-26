@@ -269,7 +269,7 @@
                   </span>
                 </div>
 
-                <div class="p-field" formArrayName="tecnologias">
+                <div class="p-field p-col" formArrayName="tecnologias">
                   <div
                     *ngFor="
                       let tech of getTecnologiasControls(profissional);
@@ -285,7 +285,7 @@
                         [formGroupName]="j"
                         class="p-fluid p-formgrid p-grid p-ai-center"
                       >
-                        <div class="p-field p-col-10">
+                        <div class="p-field p-col-10 p-lg-2">
                           <span class="p-float-label">
                             <p-autoComplete
                               id="tecnologia"
@@ -301,7 +301,7 @@
                           </span>
                         </div>
                         <ng-template [ngIf]="j != 0">
-                          <div class="p-field p-col-2">
+                          <div class="p-field p-col-2 p-lg-1">
                             <button
                               pButton
                               type="button"
@@ -318,7 +318,7 @@
                             ></button>
                           </div>
                         </ng-template>
-                        <div class="p-field p-col-6">
+                        <div class="p-field p-col-6 p-lg-2">
                           <span class="p-float-label">
                             <p-calendar
                               id="dataIni"
@@ -331,7 +331,7 @@
                             <label for="dataIni">Data Inicial</label>
                           </span>
                         </div>
-                        <div class="p-field p-col-6">
+                        <div class="p-field p-col-6 p-lg-2">
                           <span class="p-float-label">
                             <p-calendar
                               id="dataFim"
@@ -349,6 +349,7 @@
                           class="
                             p-field
                             p-col-12
+                            p-lg-2
                             p-d-inline-flex
                             p-ai-center
                             p-jc-center
@@ -375,7 +376,7 @@
                           ></p-selectButton>
                         </div>
                       </div>
-                      <div class="p-field p-col">
+                      <div class="p-field p-col p-lg-2">
                         <button
                           pButton
                           type="button"
