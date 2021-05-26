@@ -14,9 +14,11 @@
         <p-card
           class="p-m-1"
           header="Primeiro, nos conte sobre você..."
-          [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
         >
-          <div formGroupName="basico" class="p-fluid p-formgrid p-grid">
+          <div
+            formGroupName="basico"
+            class="p-fluid p-formgrid p-grid p-ai-center"
+          >
             <div class="p-field p-col-12 p-md-6">
               <span class="p-float-label">
                 <input
@@ -49,21 +51,31 @@
                   formControlName="nascimento"
                   dateFormat="dd/mm/yy"
                   [maxDate]="dateHoje"
+                  [showIcon]="true"
+                  externalDataMask
                 ></p-calendar>
                 <label for="nascimento">Data de Nascimento</label>
               </span>
             </div>
+            
             <div class="p-field p-col-12 p-md-6">
-              <span class="p-float-label">
-                <input
-                  type="password"
-                  id="senha"
-                  formControlName="senha"
-                  required
-                  pPassword
-                />
-                <label for="senha">Senha</label>
-              </span>
+              <p-password
+                placeholder="Senha"
+                inputId="password"
+                formControlName="senha"
+                required
+                promptLabel="Digite uma senha segura"
+              >
+                <ng-template pTemplate="footer">
+                  <p-divider></p-divider>
+                  <p class="p-mt-2">Sugestões:</p>
+                  <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 2">
+                    <li>Contendo 8 caracteres ou mais</li>
+                    <li>Ao menos uma letra maiúscula</li>
+                    <li>Ao menos um número</li>
+                  </ul>
+                </ng-template>
+              </p-password>
             </div>
 
             <div formGroupName="endereco" class="p-field p-col p-grid">
@@ -123,41 +135,42 @@
       <ng-template [ngIf]="isProfissional()">
         <div
           formArrayName="profissionais"
-          class="p-grid p-d-flex p-flex-wrap p-jc-around"
+          class="p-grid p-jc-around"
         >
           <div
             *ngFor="
               let profissional of getProfissionaisControls();
               let i = index
             "
-            class="p-col p-md-6 p-xl-4 p-mb-2"
+            class="p-col-12 p-mb-2"
           >
             <p-card
-              class="p-shadow-10"
+              class="p-shadow-10 blueish"
               header="experiência profissional"
               subheader="Liste suas experiências profissionais, inclusive em comunidades, preenchendo as questões abaixo:"
-              [ngStyle]="{ 'background-color': 'var(--teal-100)' }"
             >
               <div [formGroupName]="i" class="p-fluid p-formgrid p-grid">
                 <div
                   class="
                     p-field
                     p-col-12
+                    p-lg-4
                     p-d-inline-flex
                     p-ai-center
                     p-jc-center
+                    p-jc-lg-end
                     p-flex-wrap
                   "
                 >
                   <label class="switch__label" for="autonomo">
                     Profissional autônomo?
                   </label>
-                  <p-inputSwitch 
+                  <p-inputSwitch
                     formControlName="autonomo"
                     (onChange)="toggleDisabledEmpresa($event, profissional)"
                   ></p-inputSwitch>
                 </div>
-                <div class="p-field p-col-10">
+                <div class="p-field p-col-10 p-lg-3">
                   <span class="p-float-label">
                     <input
                       type="text"
@@ -169,7 +182,7 @@
                   </span>
                 </div>
                 <ng-template [ngIf]="i != 0">
-                  <div class="p-field p-col-2">
+                  <div class="p-field p-col-2 p-lg-1 p-ai-center p-jc-center">
                     <button
                       pButton
                       type="button"
@@ -184,18 +197,20 @@
                     ></button>
                   </div>
                 </ng-template>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataIni"
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataFim"
@@ -203,11 +218,13 @@
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
                       [minDate]="limiteDataExpProfissional(profissional)"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
                 </div>
-                <div class="p-field p-col-5 p-md-3">
+                <div class="p-field p-col-12 p-lg-4 p-d-flex p-ai-center p-jc-center p-jc-lg-end">
                   <label class="switch__label" for="trabalhoAtual"
                     >Trabalho atual?</label
                   >
@@ -218,14 +235,25 @@
                   ></p-inputSwitch>
                   <label for="trabalhoAtual"></label>
                 </div>
-                <div class="p-field p-col">
+                <div class="p-field p-col p-lg-4">
                   <label class="switch__label" for="dificuldade"
-                    >Dificuldade:</label
+                    >Quanto a dificuldade:</label
                   >
                   <p-selectButton
                     [options]="opcoesClassificacao"
                     formControlName="dificuldade"
                     pTooltip="1 para Trivial a 5 para Desafiadora"
+                    tooltipPosition="bottom"
+                  ></p-selectButton>
+                </div>
+                <div class="p-field p-col p-lg-4">
+                  <label class="switch__label" for="diversidade"
+                    >Quanto a repetividade:</label
+                  >
+                  <p-selectButton
+                    [options]="opcoesClassificacao"
+                    formControlName="diversidade"
+                    pTooltip="1 para Pouco Repetitiva a 5 para Muito Repetitiva"
                     tooltipPosition="bottom"
                   ></p-selectButton>
                 </div>
@@ -241,7 +269,7 @@
                   </span>
                 </div>
 
-                <div class="p-field" formArrayName="tecnologias">
+                <div class="p-field p-col" formArrayName="tecnologias">
                   <div
                     *ngFor="
                       let tech of getTecnologiasControls(profissional);
@@ -257,7 +285,7 @@
                         [formGroupName]="j"
                         class="p-fluid p-formgrid p-grid p-ai-center"
                       >
-                        <div class="p-field p-col-10">
+                        <div class="p-field p-col-10 p-lg-2">
                           <span class="p-float-label">
                             <p-autoComplete
                               id="tecnologia"
@@ -273,7 +301,7 @@
                           </span>
                         </div>
                         <ng-template [ngIf]="j != 0">
-                          <div class="p-field p-col-2">
+                          <div class="p-field p-col-2 p-lg-1">
                             <button
                               pButton
                               type="button"
@@ -290,18 +318,20 @@
                             ></button>
                           </div>
                         </ng-template>
-                        <div class="p-field p-col-6">
+                        <div class="p-field p-col-6 p-lg-2">
                           <span class="p-float-label">
                             <p-calendar
                               id="dataIni"
                               formControlName="dataIni"
                               dateFormat="dd/mm/yy"
                               [maxDate]="dateHoje"
+                              [showIcon]="true"
+                              externalDataMask
                             ></p-calendar>
                             <label for="dataIni">Data Inicial</label>
                           </span>
                         </div>
-                        <div class="p-field p-col-6">
+                        <div class="p-field p-col-6 p-lg-2">
                           <span class="p-float-label">
                             <p-calendar
                               id="dataFim"
@@ -309,6 +339,8 @@
                               dateFormat="dd/mm/yy"
                               [maxDate]="dateHoje"
                               [minDate]="limiteDataTech(tech)"
+                              [showIcon]="true"
+                              externalDataMask
                             ></p-calendar>
                             <label for="dataFim">Data Final</label>
                           </span>
@@ -317,6 +349,7 @@
                           class="
                             p-field
                             p-col-12
+                            p-lg-2
                             p-d-inline-flex
                             p-ai-center
                             p-jc-center
@@ -343,7 +376,7 @@
                           ></p-selectButton>
                         </div>
                       </div>
-                      <div class="p-field p-col">
+                      <div class="p-field p-col p-lg-2">
                         <button
                           pButton
                           type="button"
@@ -365,10 +398,10 @@
       </ng-template>
 
       <ng-template [ngIf]="isPessoal()">
-        <div formArrayName="pessoais" class="p-grid p-jc-around p-mb-2">
+        <div formArrayName="pessoais" class="p-grid p-jc-around">
           <div
-            class="p-col-12 p-md-6 p-xl-4"
-            *ngFor="let pessoal of getPessoaisControls(); let k = index"
+          *ngFor="let pessoal of getPessoaisControls(); let k = index"
+          class="p-col-12 p-mb-2"
           >
             <p-card
               header="experiência pessoal"
@@ -376,9 +409,9 @@
             >
               <div
                 [formGroupName]="k"
-                class="p-fluid p-formgrid p-grid p-ai-center"
+                class="p-col-12 p-formgrid p-grid p-ai-center"
               >
-                <div class="p-field p-col-10">
+                <div class="p-field p-col-10 p-lg-4">
                   <span class="p-float-label">
                     <!-- <input
                     type="text"
@@ -401,7 +434,7 @@
                   </span>
                 </div>
                 <ng-template [ngIf]="k != 0">
-                  <div class="p-field p-col-2">
+                  <div class="p-field p-col-2 p-lg-1">
                     <button
                       pButton
                       type="button"
@@ -411,18 +444,20 @@
                     ></button>
                   </div>
                 </ng-template>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataIni"
                       formControlName="dataIni"
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataIni">Data Inicial</label>
                   </span>
                 </div>
-                <div class="p-field p-col-6">
+                <div class="p-field p-col-6 p-lg-2">
                   <span class="p-float-label">
                     <p-calendar
                       id="dataFim"
@@ -430,6 +465,8 @@
                       dateFormat="dd/mm/yy"
                       [maxDate]="dateHoje"
                       [minDate]="limiteDataExpPessoal(pessoal)"
+                      [showIcon]="true"
+                      externalDataMask
                     ></p-calendar>
                     <label for="dataFim">Data Final</label>
                   </span>
@@ -442,9 +479,9 @@
                     formControlName="maisDe24Meses"
                   ></p-inputSwitch>
                 </div> -->
-                <div class="p-field p-col">
+                <div class="p-field p-col p-lg-3">
                   <label class="" for="aplicacaoPratica"
-                    >Aplicação prática</label
+                    >Quanto a aplicação prática desta tecnologia?</label
                   >
                   <p-selectButton
                     [options]="opcoesClassificacao"
@@ -461,7 +498,7 @@
     </form>
   </div>
 
-  <div class="buttons__grid p-fluid p-grid p-d-flex p-jc-evenly">
+  <div class="fixado buttons__grid p-fluid p-grid p-d-flex p-jc-evenly">
     <div class="p-col-12 p-md-3">
       <button
         pButton
@@ -493,9 +530,8 @@
           type="button"
           label="Adicionar Experiência Pessoal"
           icon="pi pi-plus-circle"
-          class="p-button"
+          class="p-button p-button-info"
           (click)="addExpPessoal()"
-          [ngStyle]="{ 'background-color': 'var(--orange-300)' }"
         ></button>
       </div>
     </ng-template>
@@ -506,7 +542,7 @@
         type="button"
         label="Avançar"
         icon="pi pi-check"
-        class="p-button"
+        class="p-button p-button-success"
         (click)="avancarFormVisivel()"
       ></button>
     </div>

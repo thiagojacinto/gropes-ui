@@ -17,3 +17,29 @@ div > span.p-float-label {
 .p-card-body > * {
   margin-bottom: 0.8rem;
 } */
+
+.fixado {
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+}
+
+.blueish {
+  background: rgb(210, 173, 233);
+  background: linear-gradient(
+    0deg,
+    rgba(210, 173, 233, 1) 0%,
+    rgba(206, 206, 255, 1) 28%,
+    rgba(235, 248, 251, 1) 100%
+  );
+}
+
+.orangish {
+  background: rgb(249, 235, 223);
+  background: linear-gradient(
+    0deg,
+    rgba(249, 235, 223, 1) 0%,
+    rgba(255, 218, 188, 0.9304096638655462) 21%,
+    rgba(235, 248, 251, 1) 100%
+  );
+}

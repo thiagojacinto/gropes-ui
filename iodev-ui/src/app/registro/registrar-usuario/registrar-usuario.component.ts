@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -92,6 +91,7 @@ export class RegistrarUsuarioComponent implements OnInit {
       trabalhoAtual: [false],
       descricao: ['', Validators.compose([Validators.minLength(3)])],
       dificuldade: [''],
+      diversidade: [''],
       tecnologias: this.fb.array([this.tecnologiaProfissionalForm]),
     });
   }
@@ -182,8 +182,10 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     if (isAutonomo) {
       inputEmpresa.setValue('Autonomo');
+      inputEmpresa.disable({ onlySelf: true });
     } else {
       inputEmpresa.setValue(null);
+      inputEmpresa.enable({ onlySelf: true });
     }
   }
 
