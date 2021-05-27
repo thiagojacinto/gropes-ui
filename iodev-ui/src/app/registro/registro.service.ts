@@ -11,9 +11,11 @@ export class RegistroService {
   constructor(private http: HttpClient) {}
 
   validarRegistro(registro: any): any {
-    if (!registro.profissional.empresa) {
-      registro.profissional.empresa = 'Autonomo';
-    }
+    registro.profissionais.forEach((prof: any) => {
+      if (!prof.empresa) {
+        prof.empresa = 'Autonomo';
+      }
+    })
 
     return registro;
   }
