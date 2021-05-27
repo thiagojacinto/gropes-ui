@@ -1,5 +1,5 @@
 <div class="p-d-flex p-flex-column p-flex-md-row p-jc-around p-ai-center p-grid">
-  <p-card header="Olá, <usuario>" styleClass="p-card-shadow" class="dashboard__card p-m-2 p-col-12 p-md-5">
+  <p-card header="Olá, {{ nomeUsuario }}" styleClass="p-card-shadow" class="dashboard__card p-m-2 p-col-12 p-md-5">
     <ng-template pTemplate="header">
         <!-- <img alt="Card" src="assets/dots.gif"> -->
     </ng-template>
@@ -12,7 +12,8 @@
   </p-card>
 
   <div class="graficos p-m-2 p-col p-md-5">
-    <app-grafico-barras></app-grafico-barras>
+    <app-grafico-barras [score]="scoreUsuario"></app-grafico-barras>
+    <app-grafico-calculos></app-grafico-calculos>
   </div>
 
   <div class="conteudo p-m-3 p-col-10">
