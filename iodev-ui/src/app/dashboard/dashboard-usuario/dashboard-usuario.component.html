@@ -7,13 +7,22 @@
 
     <div class="card-buttons p-d-flex p-jc-around">
       <button pButton icon="pi pi-plus" type="button" class="p-button-info" label="Informações" (click)="maisInfo()"></button>
-      <button pButton icon="pi pi-user-edit" type="button" class="p-button-warning p-button-outlined" label="Editar Perfil" (click)="maisInfo()"></button>
+      <button pButton icon="pi pi-user-edit" type="button" class="p-button-warning p-button-outlined" label="Editar Perfil" (click)="editarPerfil()"></button>
     </div>
   </p-card>
 
   <div class="graficos p-m-2 p-col p-md-5">
-    <app-grafico-barras [score]="scoreUsuario"></app-grafico-barras>
-    <app-grafico-calculos></app-grafico-calculos>
+    <app-grafico-calculos [score]="scoreUsuario"></app-grafico-calculos>
+  </div>
+
+  <p-scrollTop [threshold]="200"></p-scrollTop>
+
+  <p-dialog header="Funcionalidade será adicionada em uma próxima versão" [(visible)]="avisoDisponibilidade" position="bottom" [modal]="true"> 
+    Ops... essa funcionalidade estará presente em uma próxima versão. Aguarde novidades!
+  </p-dialog>
+
+  <div class="lista__tec p-m-2 p-col-10">
+    <app-lista-items [registros]="dados"></app-lista-items>
   </div>
 
   <div class="conteudo p-m-3 p-col-10">
