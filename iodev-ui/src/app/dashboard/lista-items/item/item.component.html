@@ -1,0 +1,29 @@
+<ul *ngIf="item.isProfissional; else pessoal">
+  <li>
+    <h5>Em sua experiência profissional</h5>
+    <span>Relevancia: </span>
+    <strong>{{ item.relevancia }}</strong>
+  </li>
+  <li>
+    <span> Frequência de uso: </span>
+    <strong>{{ item.frequencia }}</strong>
+  </li>
+</ul>
+
+<ng-template #pessoal>
+  <h5>A partir de seus interesses pessoais</h5>
+  <ul>
+    <li>
+    <span>Relevancia: </span>
+    <strong>{{ item.relevancia }}</strong>
+  </li>
+  <li>
+    <span> Inovatividade: </span>
+    <strong>{{ item.inovatividade }}</strong>
+  </li>
+  <li>
+    <span> Aplicação na prática: </span>
+    <strong>{{ item.aplicacaoPratica }}</strong>
+  </li>
+  </ul>
+</ng-template>

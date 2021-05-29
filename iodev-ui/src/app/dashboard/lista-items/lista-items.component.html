@@ -1,0 +1,15 @@
+<p-timeline [value]="lista" align="alternate">
+  <ng-template pTemplate="marker" let-item>
+    <span
+      class="marcador__arredondado p-shadow-3"
+      [style.backgroundColor]="item.color"
+    >
+      <i [ngClass]="item.icon"></i>
+    </span>
+  </ng-template>
+  <ng-template pTemplate="content" let-item>
+    <p-card [header]="item.tecnologia" [subheader]="item.contatoDesde">
+      <app-item [item]="item"></app-item>
+    </p-card>
+  </ng-template>
+</p-timeline>

@@ -35,7 +35,12 @@
               "node_modules/primeflex/primeflex.css"
             ],
             "scripts": [
-              "node_modules/inputmask/dist/inputmask.js"
+              "node_modules/inputmask/dist/inputmask.js",
+              "node_modules/chart.js/dist/Chart.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "inputmask",
+              "chart.js"
             ]
           },
           "configurations": {
@@ -57,7 +62,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",

@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
 import techList from 'src/assets/techList.json';
@@ -42,7 +43,8 @@ export class RegistrarUsuarioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private msgService: MessageService,
-    private registroService: RegistroService
+    private registroService: RegistroService,
+    private router: Router
   ) {}
 
   get basicoForm() {
@@ -235,10 +237,17 @@ export class RegistrarUsuarioComponent implements OnInit {
       .registrarNovoUsuario(this.registrarUsuario.value)
       .subscribe(
         (res) => {
+          const novoUsuarioId = res?.Registro.Usuario.id;
+
           this.msgService.add({
             severity: 'success',
-            summary: `Registro realizado com sucesso: ID = ${res?.id}`,
+            summary: `Registro realizado com sucesso: ID = ${novoUsuarioId}. Nossas boas vindas, ${res?.Registro.Usuario.nome}`,
           });
+
+          setTimeout(() => {
+            this.router.navigate(['dashboard', novoUsuarioId])
+            
+          }, 3000);
         },
         (err) => {
           this.msgService.add({

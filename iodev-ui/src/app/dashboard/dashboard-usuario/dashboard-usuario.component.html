@@ -1,0 +1,32 @@
+<div class="p-d-flex p-flex-column p-flex-md-row p-jc-around p-ai-center p-grid">
+  <p-card header="Olá, {{ nomeUsuario }}" styleClass="p-card-shadow" class="dashboard__card p-m-2 p-col-12 p-md-5">
+    <ng-template pTemplate="header">
+        <!-- <img alt="Card" src="assets/dots.gif"> -->
+    </ng-template>
+    <p>Obrigado por registrar-se. Acompanhe seu perfil e as análises providas por nosso algoritmo nesta página. Na dúvida, acesse Mais informações.</p>
+
+    <div class="card-buttons p-d-flex p-jc-around">
+      <button pButton icon="pi pi-plus" type="button" class="p-button-info" label="Informações" (click)="maisInfo()"></button>
+      <button pButton icon="pi pi-user-edit" type="button" class="p-button-warning p-button-outlined" label="Editar Perfil" (click)="editarPerfil()"></button>
+    </div>
+  </p-card>
+
+  <div class="graficos p-m-2 p-col p-md-5">
+    <app-grafico-calculos [score]="scoreUsuario"></app-grafico-calculos>
+  </div>
+
+  <p-scrollTop [threshold]="200"></p-scrollTop>
+
+  <p-dialog header="Funcionalidade será adicionada em uma próxima versão" [(visible)]="avisoDisponibilidade" position="bottom" [modal]="true"> 
+    Ops... essa funcionalidade estará presente em uma próxima versão. Aguarde novidades!
+  </p-dialog>
+
+  <div class="lista__tec p-m-2 p-col-10">
+    <app-lista-items [registros]="dados"></app-lista-items>
+  </div>
+
+  <div class="conteudo p-m-3 p-col-10">
+    <p>Mussum Ipsum, cacilds vidis litro abertis. Suco de cevadiss deixa as pessoas mais interessantis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Sapien in monti palavris qui num significa nadis i pareci latim. Quem num gosta di mé, boa gentis num é.</p>
+    <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Diuretics paradis num copo é motivis de denguis. Detraxit consequat et quo num tendi nada.</p>
+  </div>
+</div>
