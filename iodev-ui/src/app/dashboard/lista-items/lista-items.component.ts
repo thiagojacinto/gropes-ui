@@ -35,6 +35,18 @@ export class ListaItemsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.registros) {
+      console.log(`[INFO] CHANGE of Lista de Itens`);
+      console.log(
+        `[INFO] Lista de Itens: CONTENT of empresaUsuarioItens: ${JSON.stringify(
+          this.registros['empresaUsuarioItens']
+        )}`
+      );
+      console.log(
+        `[INFO] Lista de Itens: CONTENT of tecnologiasUsuario: ${JSON.stringify(
+          this.registros['tecnologiasUsuario']
+        )}`
+      );
+      
       this.lista = this.listarTecnologiasProfissionais(
         this.registros['empresaUsuarioItens']
       ).concat(
@@ -46,8 +58,8 @@ export class ListaItemsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.lista = [
       {
-        status: 'Carregando...',
-        date: '',
+        tecnologia: 'Carregando...',
+        contatoDesde: '',
         icon: this.aleatorioDe(this.icones),
         color: this.aleatorioDe(this.cores),
       },
