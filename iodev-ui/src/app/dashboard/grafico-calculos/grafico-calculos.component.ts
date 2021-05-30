@@ -30,8 +30,8 @@ export class GraficoCalculosComponent implements OnChanges {
       console.log(`[INFO] CHANGE of SCORE: ${this.score}`);
       console.log(`[INFO] IMPACT in PERCENTUAL to: ${this.percentual}`);
 
-      // this.dados.datasets[0].data = [100 - this.percentual, this.percentual];
-      this.dados.datasets[0].data = [100 - 45.9, 45.9];
+      this.dados.datasets[0].data = [100 - this.percentual, this.percentual];
+      // this.dados.datasets[0].data = [100 - 45.9, 45.9];
       console.log(`[INFO] UPDATE dataset of SCORE...`);
     }
   }
