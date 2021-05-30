@@ -49,7 +49,9 @@ export class DashboardUsuarioComponent implements OnInit {
       const scores = this.dados?.tecnologiasUsuario.map(
         (tecUser: any) => tecUser.usuario.score
       );
-      return scores[0] ? scores[0] : 0;
+      const score = Math.floor(scores[0]);
+      return score ? score : 0;
+      
     } catch (error) {
       console.error(error);
       return 0;
