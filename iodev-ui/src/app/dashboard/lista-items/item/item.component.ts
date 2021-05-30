@@ -16,6 +16,7 @@ export class ItemComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.item) {
       console.log(`[INFO] <item> ... Received item data: ${JSON.stringify(this.item)}`);
+      this.item = this.item;
     }
   }
 

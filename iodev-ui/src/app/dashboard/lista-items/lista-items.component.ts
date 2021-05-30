@@ -3,7 +3,7 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges,
+  SimpleChanges
 } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
 
@@ -55,7 +55,6 @@ export class ListaItemsComponent implements OnInit, OnChanges {
       );
       
       console.log(`[INFO] Novo conteudo da lista: ${JSON.stringify(this.lista)}`);
-      
     }
   }
 
