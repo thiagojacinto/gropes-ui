@@ -12,7 +12,7 @@ export class GraficoCalculosComponent implements OnChanges {
 
   constructor() {
     this.dados = {
-      labels: ['% para próximo nível', '% Score atual'],
+      labels: ['% para próximo nível', '% Score'],
       datasets: [
         {
           data: [100 - this.percentual, this.percentual],
@@ -37,7 +37,7 @@ export class GraficoCalculosComponent implements OnChanges {
   }
 
   calcularPercentualScore(score: number): number {
-    return (score / this.ALVO) * 100;
+    return Math.floor((score / this.ALVO) * 100);
   }
 
 }
