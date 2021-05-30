@@ -12,12 +12,13 @@ export class GraficoCalculosComponent implements OnChanges {
 
   constructor() {
     this.dados = {
-      labels: ['Alvo', 'Score'],
+      labels: ['% para próximo nível', '% Score atual'],
       datasets: [
         {
           data: [100 - this.percentual, this.percentual],
-          backgroundColor: ['#264653', '#E76F51'],
+          backgroundColor: ['#CFF2EF', '#E76F51'],
           hoverBackgroundColor: ['#228176', '#E0451F'],
+          borderColor: ['#fff', '#7E2711'],
         },
       ],
     };
@@ -28,6 +29,10 @@ export class GraficoCalculosComponent implements OnChanges {
       this.percentual = this.calcularPercentualScore(this.score);
       console.log(`[INFO] CHANGE of SCORE: ${this.score}`);
       console.log(`[INFO] IMPACT in PERCENTUAL to: ${this.percentual}`);
+
+      // this.dados.datasets[0].data = [100 - this.percentual, this.percentual];
+      this.dados.datasets[0].data = [100 - 45.9, 45.9];
+      console.log(`[INFO] UPDATE dataset of SCORE...`);
     }
   }
 
