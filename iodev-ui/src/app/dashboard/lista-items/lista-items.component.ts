@@ -35,6 +35,7 @@ export class ListaItemsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.registros) {
+
       console.log(`[INFO] CHANGE of Lista de Itens`);
       console.log(
         `[INFO] Lista de Itens: CONTENT of empresaUsuarioItens: ${JSON.stringify(
@@ -52,6 +53,9 @@ export class ListaItemsComponent implements OnInit, OnChanges {
       ).concat(
         this.listarTecnologiasPessoais(this.registros['tecnologiasUsuario'])
       );
+      
+      console.log(`[INFO] Novo conteudo da lista: ${JSON.stringify(this.lista)}`);
+      
     }
   }
 
