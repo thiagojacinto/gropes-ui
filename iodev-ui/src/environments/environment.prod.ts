@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API: 'http://gropes.herokuapp.com',
+  API: 'https://gropes.herokuapp.com',
 };
