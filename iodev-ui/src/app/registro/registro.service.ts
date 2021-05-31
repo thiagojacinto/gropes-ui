@@ -25,9 +25,9 @@ export class RegistroService {
     if (!environment.production) {
       registro.id = Math.floor(Math.random() * 10000);
     }
-    console.log(`[INFO] > > > POST registrarUsuario: ${JSON.stringify(registro)}`);
     
     const registroValido = this.validarRegistro(registro);
+    console.log(`[INFO] > > > POST registrarUsuario: ${JSON.stringify(registroValido)}`);
     return this.http.post<any>(baseUrl, registroValido);
   }
 }
