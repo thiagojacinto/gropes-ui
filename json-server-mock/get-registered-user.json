@@ -1,0 +1,259 @@
+{
+  "usuarios": [
+    {
+      "id": 5,
+      "empresaUsuarioItens": [
+        {
+          "empUsu": {
+            "id": 1,
+            "empresa": {
+              "id": 1,
+              "descricao": "Kovacek, Lemke and Bayer",
+              "hibernateLazyInitializer": {}
+            },
+            "usuario": {
+              "id": 5,
+              "nome": "Luedji",
+              "nascimento": "1990-10-31T00:00:00.000+00:00",
+              "score": 631.8403660606061,
+              "email": "awbc2sds222@example.com",
+              "senha": "Ceb2yxUP9z1Crmz",
+              "rua": "Sheldon Inlet",
+              "numero": "254",
+              "complemento": "Complem. Apto. 324",
+              "cep": "53000000"
+            },
+            "dataIni": "2020-05-19T00:00:00.000+00:00",
+            "dataFim": "2021-05-25T00:00:00.000+00:00",
+            "diversidade": 4,
+            "complexidade": 4,
+            "trabalhoAtual": false,
+            "descricao": "Velit voluptas velit quo praesentium."
+          },
+          "tecnologia": {
+            "id": 1,
+            "descricao": "JavaScript",
+            "relevancia": 0.8181818181818182
+          },
+          "dataIni": "2016-08-31T00:00:00.000+00:00",
+          "dataFim": "2021-05-25T00:00:00.000+00:00",
+          "frequencia": 3,
+          "ca": 205.33333333333331,
+          "det": 0.55242,
+          "exp": 56,
+          "utilizaAtual": "N"
+        },
+        {
+          "empUsu": {
+            "id": 1,
+            "empresa": {
+              "id": 1,
+              "descricao": "Kovacek, Lemke and Bayer",
+              "hibernateLazyInitializer": {}
+            },
+            "usuario": {
+              "id": 5,
+              "nome": "Luedji",
+              "nascimento": "1990-10-31T00:00:00.000+00:00",
+              "score": 631.8403660606061,
+              "email": "awbc2sds222@example.com",
+              "senha": "Ceb2yxUP9z1Crmz",
+              "rua": "Sheldon Inlet",
+              "numero": "254",
+              "complemento": "Complem. Apto. 324",
+              "cep": "53000000"
+            },
+            "dataIni": "2020-05-19T00:00:00.000+00:00",
+            "dataFim": "2021-05-25T00:00:00.000+00:00",
+            "diversidade": 4,
+            "complexidade": 4,
+            "trabalhoAtual": false,
+            "descricao": "Velit voluptas velit quo praesentium."
+          },
+          "tecnologia": {
+            "id": 2,
+            "descricao": "NodeJS",
+            "relevancia": 0.36363636363636365
+          },
+          "dataIni": "2016-10-20T00:00:00.000+00:00",
+          "dataFim": "2021-05-25T00:00:00.000+00:00",
+          "frequencia": 5,
+          "ca": 238.33333333333331,
+          "det": 0.6803,
+          "exp": 55,
+          "utilizaAtual": "N"
+        },
+        {
+          "empUsu": {
+            "id": 1,
+            "empresa": {
+              "id": 1,
+              "descricao": "Kovacek, Lemke and Bayer",
+              "hibernateLazyInitializer": {}
+            },
+            "usuario": {
+              "id": 5,
+              "nome": "Luedji",
+              "nascimento": "1990-10-31T00:00:00.000+00:00",
+              "score": 631.8403660606061,
+              "email": "awbc2sds222@example.com",
+              "senha": "Ceb2yxUP9z1Crmz",
+              "rua": "Sheldon Inlet",
+              "numero": "254",
+              "complemento": "Complem. Apto. 324",
+              "cep": "53000000"
+            },
+            "dataIni": "2020-05-19T00:00:00.000+00:00",
+            "dataFim": "2021-05-25T00:00:00.000+00:00",
+            "diversidade": 4,
+            "complexidade": 4,
+            "trabalhoAtual": false,
+            "descricao": "Velit voluptas velit quo praesentium."
+          },
+          "tecnologia": {
+            "id": 3,
+            "descricao": "Mongo",
+            "relevancia": 0.36363636363636365
+          },
+          "dataIni": "2016-11-20T00:00:00.000+00:00",
+          "dataFim": "2021-05-25T00:00:00.000+00:00",
+          "frequencia": 3,
+          "ca": 198,
+          "det": 0.55242,
+          "exp": 54,
+          "utilizaAtual": "N"
+        },
+        {
+          "empUsu": {
+            "id": 2,
+            "empresa": {
+              "id": 2,
+              "descricao": "Cormier Inc",
+              "hibernateLazyInitializer": {}
+            },
+            "usuario": {
+              "id": 5,
+              "nome": "Luedji",
+              "nascimento": "1990-10-31T00:00:00.000+00:00",
+              "score": 631.8403660606061,
+              "email": "awbc2sds222@example.com",
+              "senha": "Ceb2yxUP9z1Crmz",
+              "rua": "Sheldon Inlet",
+              "numero": "254",
+              "complemento": "Complem. Apto. 324",
+              "cep": "53000000"
+            },
+            "dataIni": "2014-02-03T00:00:00.000+00:00",
+            "dataFim": "2016-08-31T00:00:00.000+00:00",
+            "diversidade": 4,
+            "complexidade": 5,
+            "trabalhoAtual": false,
+            "descricao": "Deserunt eum quia labore autem dolore tenetur."
+          },
+          "tecnologia": {
+            "id": 4,
+            "descricao": "AngularJS",
+            "relevancia": 0.36363636363636365
+          },
+          "dataIni": "2014-05-02T00:00:00.000+00:00",
+          "dataFim": "2021-05-25T00:00:00.000+00:00",
+          "frequencia": 4,
+          "ca": 364,
+          "det": 0.6803,
+          "exp": 84,
+          "utilizaAtual": "S"
+        },
+        {
+          "empUsu": {
+            "id": 2,
+            "empresa": {
+              "id": 2,
+              "descricao": "Cormier Inc",
+              "hibernateLazyInitializer": {}
+            },
+            "usuario": {
+              "id": 5,
+              "nome": "Luedji",
+              "nascimento": "1990-10-31T00:00:00.000+00:00",
+              "score": 631.8403660606061,
+              "email": "awbc2sds222@example.com",
+              "senha": "Ceb2yxUP9z1Crmz",
+              "rua": "Sheldon Inlet",
+              "numero": "254",
+              "complemento": "Complem. Apto. 324",
+              "cep": "53000000"
+            },
+            "dataIni": "2014-02-03T00:00:00.000+00:00",
+            "dataFim": "2016-08-31T00:00:00.000+00:00",
+            "diversidade": 4,
+            "complexidade": 5,
+            "trabalhoAtual": false,
+            "descricao": "Deserunt eum quia labore autem dolore tenetur."
+          },
+          "tecnologia": {
+            "id": 5,
+            "descricao": "SQL",
+            "relevancia": 0.36363636363636365
+          },
+          "dataIni": "2014-03-12T00:00:00.000+00:00",
+          "dataFim": "2021-05-25T00:00:00.000+00:00",
+          "frequencia": 2,
+          "ca": 315.3333333333333,
+          "det": 0.55242,
+          "exp": 86,
+          "utilizaAtual": "N"
+        }
+      ],
+      "tecnologiasUsuario": [
+        {
+          "usuario": {
+            "id": 5,
+            "nome": "Luedji",
+            "nascimento": "1990-10-31T00:00:00.000+00:00",
+            "score": 631.8403660606061,
+            "email": "awbc2sds222@example.com",
+            "senha": "Ceb2yxUP9z1Crmz",
+            "rua": "Sheldon Inlet",
+            "numero": "254",
+            "complemento": "Complem. Apto. 324",
+            "cep": "53000000"
+          },
+          "tecnologia": {
+            "id": 6,
+            "descricao": "Java",
+            "relevancia": 0.8181818181818182
+          },
+          "inovatividade": 1,
+          "conheceDesde": "2016-08-31T00:00:00.000+00:00",
+          "estudaDesde": "2016-08-31T00:00:00.000+00:00",
+          "estudouAte": "2021-05-25T00:00:00.000+00:00",
+          "aplicacaoPratica": 4
+        },
+        {
+          "usuario": {
+            "id": 5,
+            "nome": "Luedji",
+            "nascimento": "1990-10-31T00:00:00.000+00:00",
+            "score": 631.8403660606061,
+            "email": "awbc2sds222@example.com",
+            "senha": "Ceb2yxUP9z1Crmz",
+            "rua": "Sheldon Inlet",
+            "numero": "254",
+            "complemento": "Complem. Apto. 324",
+            "cep": "53000000"
+          },
+          "tecnologia": {
+            "id": 7,
+            "descricao": "SQL Server",
+            "relevancia": 0.36363636363636365
+          },
+          "inovatividade": 1,
+          "conheceDesde": "2016-11-20T00:00:00.000+00:00",
+          "estudaDesde": "2016-11-20T00:00:00.000+00:00",
+          "estudouAte": "2021-05-25T00:00:00.000+00:00",
+          "aplicacaoPratica": 3
+        }
+      ]
+    }
+  ]
+}

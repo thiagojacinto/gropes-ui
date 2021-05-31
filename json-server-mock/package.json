@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch db.json --port 8080",
+    "mock:get": "json-server --watch get-registered-user.json --port 8080",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
