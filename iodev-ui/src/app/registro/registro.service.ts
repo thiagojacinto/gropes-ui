@@ -22,8 +22,12 @@ export class RegistroService {
 
   registrarNovoUsuario(registro: any): Observable<any> {
     const baseUrl = environment.API + '/usuarios';
-    registro.id = Math.floor(Math.random() * 10000);
+    if (!environment.production) {
+      registro.id = Math.floor(Math.random() * 10000);
+    }
+    
     const registroValido = this.validarRegistro(registro);
+    console.log(`[INFO] > > > POST registrarUsuario: ${JSON.stringify(registroValido)}`);
     return this.http.post<any>(baseUrl, registroValido);
   }
 }

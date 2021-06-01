@@ -1,5 +1,5 @@
 <ul *ngIf="item.isProfissional; else pessoal">
-  <h5>Em sua experiência profissional</h5>
+  <h4>Em sua experiência profissional</h4>
   <li>
     <span>Relevancia: </span>
     <strong>{{ item.relevancia }}</strong>
@@ -11,7 +11,7 @@
 </ul>
 
 <ng-template #pessoal>
-  <h5>A partir de seus interesses pessoais</h5>
+  <h4>A partir de seus interesses pessoais</h4>
   <ul>
     <li>
     <span>Relevancia: </span>
