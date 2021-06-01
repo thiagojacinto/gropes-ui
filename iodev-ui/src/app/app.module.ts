@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HeaderModule } from './paginas/header/header.module';
 import { RegistroModule } from './registro/registro.module';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RegistroModule } from './registro/registro.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     RegistroModule,
-    DashboardModule
+    DashboardModule,
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
