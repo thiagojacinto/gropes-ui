@@ -15,6 +15,13 @@ export class HeaderComponent implements OnInit {
     this.avisoDisponibilidade = true;
   }
 
+  botaoBusca(event: any) {
+    this.funcionalidadeIndisponivel();
+  }
+  botaoLogout(event: any) {
+    this.funcionalidadeIndisponivel();
+  }
+
   constructor() {}
 
   ngOnInit(): void {

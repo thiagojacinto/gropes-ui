@@ -8,14 +8,14 @@
         placeholder="Procurar um usuário..."
       />
       <button
-        onClick="funcionalidadeIndisponivel"
         pButton
+        (click)="botaoBusca($event)"
         class="p-mr-2 p-button-rounded p-button-outlined"
         icon="pi pi-search"
       ></button>
       <button
-        onClick="funcionalidadeIndisponivel()"
         pButton
+        (click)="botaoLogout($event)"
         class="p-mr-2 p-button-raised p-button-rounded"
         icon="pi pi-power-off"
       ></button>
