@@ -1,0 +1,35 @@
+.gradient-bg {
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    174deg,
+    rgba(255, 255, 255, 0.4780287114845938) 15%,
+    rgba(56, 160, 244, 0.32953345070422535) 57%,
+    rgba(56, 244, 236, 0.6591109154929577) 85%
+  );
+  background: -webkit-linear-gradient(
+    174deg,
+    rgba(255, 255, 255, 0.4780287114845938) 15%,
+    rgba(56, 160, 244, 0.32953345070422535) 57%,
+    rgba(56, 244, 236, 0.6591109154929577) 85%
+  );
+  background: linear-gradient(
+    174deg,
+    rgba(255, 255, 255, 0.4780287114845938) 15%,
+    rgba(56, 160, 244, 0.32953345070422535) 57%,
+    rgba(56, 244, 236, 0.6591109154929577) 85%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#38f4ec",GradientType=1);
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

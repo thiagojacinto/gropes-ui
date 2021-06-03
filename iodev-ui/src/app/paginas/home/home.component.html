@@ -1,0 +1,148 @@
+<main id="home" class="bg-gradient p-grid p-jc-around">
+  <div class="p-col-12 p-lg-6 p-m-2">
+    <div class="p-grid p-ai-center p-jc-around">
+      <i class="p-col-2 p-offset-2 pi pi-forward" style="font-size: 2.4rem"></i>
+      <h1 class="p-col-6">ioDev</h1>
+
+      <div class="p-col-9 p-m-2 home__chamada">
+        <p style="text-align: right">
+          Com a ioDev, você turbina sua <strong>jornada profissional</strong>
+        </p>
+        <p style="text-align: justify">
+          Alinhando suas experiências ao aplicar um método analítico que traça
+          métricas comparativas com graus de domínio, inovatividade e relevância
+          de acordo com os demais usuários. <strong>Comece já!</strong>
+        </p>
+      </div>
+    </div>
+    <div class="home__botoes p-grid p-jc-around">
+      <button
+        class="
+          p-col-9
+          p-lg-3
+          p-m-2
+          p-m-lg-3
+          p-button-outlined
+          p-button-info
+          p-button-raised
+          p-button-rounded
+        "
+        pButton
+        type="button"
+        label="Corporativo"
+        disabled
+      ></button>
+      <button
+        class="
+          p-col-9
+          p-lg-3
+          p-m-2
+          p-m-lg-3
+          p-button-primary
+          p-button-raised
+          p-button-rounded
+        "
+        pButton
+        type="button"
+        label="Registrar"
+        (click)="goToRegistro($event)"
+      ></button>
+      <button
+        class="
+          p-col-9
+          p-lg-3
+          p-m-2
+          p-m-lg-3
+          p-button-warning
+          p-button-raised
+          p-button-rounded
+        "
+        pButton
+        type="button"
+        label="Entrar"
+        (click)="exibirLogin()"
+      ></button>
+    </div>
+  </div>
+  <div class="p-col-12 p-lg-4 p-m-2">
+    <!-- <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 48px; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAEfsAG-tLY&#x2F;view?embed">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAEfsAG-tLY&#x2F;view?utm_content=DAEfsAG-tLY&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">OnBoard - Porto Digital - UNIT</a> de Amanda Lima -->
+    <div
+      style="
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 56.25%;
+        padding-bottom: 48px;
+        box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
+        margin-top: 1.6em;
+        margin-bottom: 0.9em;
+        overflow: hidden;
+        border-radius: 8px;
+        will-change: transform;
+      "
+    >
+      <iframe
+        style="
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          border: none;
+          padding: 0;
+          margin: 0;
+        "
+        src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAEfsAG-tLY&#x2F;view?embed"
+      >
+      </iframe>
+    </div>
+  </div>
+</main>
+
+<p-dialog header="Entrar" [(visible)]="exibeLogin" [modal]="true">
+  <div class="login__modal p-grid p-jc-around p-ai-left">
+    <span class="p-col-12 p-m-3 p-float-label">
+      <input type="email" id="email" pInputText required />
+      <label for="email">Digite o e-mail registrado</label>
+    </span>
+    <span class="p-col-12 p-m-3 p-float-label">
+      <input type="password" id="senha" pInputText required />
+      <label for="senha">Senha</label>
+    </span>
+    <div class="remember_me p-col-12">  
+      <input type="checkbox" id="rememberMe" name="rememberMe" />
+      <label for="rememberMe">Lembrar-se de mim</label>
+    </div>
+    <button
+      class="p-col-12 p-m-2 p-m-lg-3 p-button-success p-button-lg p-button-raised"
+      pButton
+      type="button"
+      label="Entrar"
+      (click)="funcionalidadeIndisponivel()"
+      style="display: block;"
+    ></button>
+    <p-divider class="p-col-12"></p-divider>
+    <p class="p-col-12">
+      Novo usuário?
+      <a [routerLink]="['/registro', 'usuario']">Registre-se aqui</a>
+    </p>
+    <button
+      class="p-col-12 p-m-2 p-m-lg-3 p-button-text"
+      pButton
+      type="button"
+      label="Esqueceu a senha?"
+      (click)="funcionalidadeIndisponivel()"
+    ></button>
+  </div>
+</p-dialog>
+
+  <p-dialog header="Funcionalidade será adicionada em uma próxima versão" [(visible)]="avisoDisponibilidade" position="bottom" [modal]="true"> 
+    Ops... essa funcionalidade estará presente em uma próxima versão. Aguarde novidades!
+  </p-dialog>
