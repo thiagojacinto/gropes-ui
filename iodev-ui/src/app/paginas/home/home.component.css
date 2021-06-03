@@ -1,0 +1,38 @@
+:host main {
+  min-height: 90vh;
+}
+
+.bg-gradient {
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4990371148459384) 3%,
+    rgba(134, 56, 244, 0.23573179271708689) 29%,
+    rgba(56, 192, 244, 0.46262254901960786) 61%,
+    rgba(255, 255, 255, 0.4780287114845938) 94%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4990371148459384) 3%,
+    rgba(134, 56, 244, 0.23573179271708689) 29%,
+    rgba(56, 192, 244, 0.46262254901960786) 61%,
+    rgba(255, 255, 255, 0.4780287114845938) 94%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4990371148459384) 3%,
+    rgba(134, 56, 244, 0.23573179271708689) 29%,
+    rgba(56, 192, 244, 0.46262254901960786) 61%,
+    rgba(255, 255, 255, 0.4780287114845938) 94%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+}
+
+.login__modal {
+  min-width: 50vw;
+  max-width: 70vw;
+}
+
+/* .login__modal > * {
+  margin: 1rem
+} */
