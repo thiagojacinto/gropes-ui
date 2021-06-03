@@ -7,13 +7,19 @@ import { HomeComponent } from './paginas/home/home.component';
 import { RegistrarUsuarioComponent } from './registro/registrar-usuario/registrar-usuario.component';
 
 const routes: Routes = [
-  { path: 'registro/usuario', component: RegistrarUsuarioComponent },
+  {
+    path: 'registro/usuario',
+    component: RegistrarUsuarioComponent,
+    loadChildren: () =>
+      import('./registro/registro.module').then((r) => r.RegistroModule),
+  },
   {
     path: 'dashboard/:uid',
-    component: DashboardUsuarioComponent,
     resolve: {
       dados: DashboardResolver,
     },
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((d) => d.DashboardModule),
   },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
