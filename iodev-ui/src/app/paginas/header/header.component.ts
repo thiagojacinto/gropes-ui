@@ -10,6 +10,11 @@ import { MenuItem, PrimeIcons } from 'primeng/api';
 export class HeaderComponent implements OnInit {
   menuItens!: MenuItem[];
   avisoDisponibilidade = false;
+  sobreGropes = false;
+
+  toggleSobreGropes() {
+    this.sobreGropes = !this.sobreGropes;
+  }
 
   funcionalidadeIndisponivel() {
     this.avisoDisponibilidade = true;
@@ -28,10 +33,12 @@ export class HeaderComponent implements OnInit {
     this.menuItens = [
       {
         label: 'ioDev',
+        routerLink: ['/home'],
       },
       {
         label: 'Registre-se',
-        routerLink: ['/registro/usuario']
+        icon: PrimeIcons.USER_PLUS,
+        routerLink: ['/registro/usuario'],
       },
       {
         label: 'Análise',
@@ -41,6 +48,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Sobre',
         icon: PrimeIcons.BOOK,
+        command: (evento: any) => this.toggleSobreGropes()
       },
       {
         label: 'Blog',

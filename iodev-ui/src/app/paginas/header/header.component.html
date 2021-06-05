@@ -2,6 +2,7 @@
   <p-menubar [model]="menuItens" class="gradient">
     <ng-template pTemplate="end" class="p-d-flex p-ai-center">
       <input
+        style="max-width: 40vw"
         class="p-mr-2 p-mr-sm-1"
         type="text"
         pInputText
@@ -30,5 +31,64 @@
   >
     Ops... essa funcionalidade estará presente em uma próxima versão. Aguarde
     novidades!
+  </p-dialog>
+
+  <p-dialog
+    header="Compreenda melhor a tecnologia por trás do ioDev"
+    [(visible)]="sobreGropes"
+    position="center"
+    [modal]="true"
+    [style]="{ width: '90vw' }"
+  >
+    <p>O ioDev opera segundo o algoritmo GROPES, desenvolvido a partir de uma revisão acadêmica sobre o mercado de trabalho e os profissionais de tecnologia da informação.</p>
+    <p>
+      A frequente evolução das ferramentas e metodologias de trabalho faz com
+      que profissionais da área de tecnologia da informação (TI), justamente os
+      responsáveis por promover tais inovações tecnológicas, estejam vulneráveis
+      a elas. Encontrar-se inapto a exercer a sua profissão em plena idade
+      produtiva é um dos maiores temores e principais causadores de estresse em
+      profissionais de TI. Diferente de outras profissões, onde o conhecimento e
+      as habilidades se tornam obsoletas mais lentamente, estima-se que um
+      profissional da área de TI leve apenas dois anos para tornar-se defasado
+      profissionalmente.
+    </p>
+    <p>
+      Desse modo, avaliar a relação entre as suas habilidades e conhecimentos e
+      as necessidades do mercado é fundamental para se manter ativo e
+      competitivo no mercado. Este trabalho propõe a criação de um algoritmo,
+      batizado de GROPES (Grau Relativo da Obsolescência Profissional em
+      Engenheiros de Software), para ajudar profissionais de tecnologia da
+      informação, principalmente engenheiros de software, a perceber o grau
+      relativo da obsolescência em que se encontram e o quanto isso influencia
+      na empregabilidade.
+    </p>
+    <p>
+      A pesquisa desenvolvida contou com dados de 50 profissionais da área de
+      engenharia de software e com a avaliação de 9 profissionais, distribuídos
+      em três grupos, cada um representando uma instituição distinta, para
+      avaliar a eficiência do algoritmo proposto em comparação com a análise de
+      avaliadores reais. O resultado mostrou que mesmo vulnerável a critérios
+      subjetivos de avaliação, não houve diferenças significativas entre o
+      julgamento dos grupos de avaliadores e o GROPES.
+    </p>
+
+    <span>
+      ROCHA, B. S.
+      <strong
+        >GROPES: Um algoritmo para a avaliação da obsolescência relativa de
+        engenheiros de software</strong
+      >. Dissertação (Mestrado Profissional em Engenharia de Software) - Cesar
+      EDU, CESAR. Recife, 2017
+    </span>
+    <p-footer>
+      <button
+        pButton
+        type="button"
+        label="Fechar"
+        icon="pi pi-times"
+        class="p-button-text"
+        (click)="toggleSobreGropes()"
+      ></button>
+    </p-footer>
   </p-dialog>
 </div>
