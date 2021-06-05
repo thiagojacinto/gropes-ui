@@ -1,8 +1,8 @@
-<div class="p-m-2">
+<div class="p-m-2 p-m-sm-1">
   <p-menubar [model]="menuItens" class="gradient">
     <ng-template pTemplate="end" class="p-d-flex p-ai-center">
       <input
-        class="p-mr-2"
+        class="p-mr-2 p-mr-sm-1"
         type="text"
         pInputText
         placeholder="Procurar um usuário..."
@@ -10,13 +10,13 @@
       <button
         pButton
         (click)="botaoBusca($event)"
-        class="p-mr-2 p-button-rounded p-button-outlined"
+        class="p-mr-2 p-mr-sm-1 p-button-rounded p-button-outlined"
         icon="pi pi-search"
       ></button>
       <button
         pButton
         (click)="botaoLogout($event)"
-        class="p-mr-2 p-button-raised p-button-rounded"
+        class="p-button-raised p-button-rounded"
         icon="pi pi-power-off"
       ></button>
     </ng-template>
