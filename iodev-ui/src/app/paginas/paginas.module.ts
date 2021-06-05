@@ -28,7 +28,9 @@ import { Erro404Component } from './erro404/erro404.component';
     InputTextModule
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    Erro404Component
   ]
 })
 export class PaginasModule { }

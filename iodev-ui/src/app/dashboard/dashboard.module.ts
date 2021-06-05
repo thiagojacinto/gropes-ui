@@ -13,6 +13,8 @@ import { GraficoBarrasComponent } from './grafico-barras/grafico-barras.componen
 import { GraficoCalculosComponent } from './grafico-calculos/grafico-calculos.component';
 import { ListaItemsComponent } from './lista-items/lista-items.component';
 import { ItemComponent } from './lista-items/item/item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ItemComponent } from './lista-items/item/item.component';
     ItemComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
+    DashboardRoutingModule,
     CardModule,
     ButtonModule,
     ChartModule,
