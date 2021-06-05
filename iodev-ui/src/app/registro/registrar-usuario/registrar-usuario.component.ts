@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { NavegacaoService } from 'src/app/utils/navegacao-service.service';
 
 import techList from 'src/assets/techList.json';
 import { RegistroService } from '../registro.service';
@@ -44,7 +45,8 @@ export class RegistrarUsuarioComponent implements OnInit {
     private fb: FormBuilder,
     private msgService: MessageService,
     private registroService: RegistroService,
-    private router: Router
+    private router: Router,
+    private navegacaoService: NavegacaoService
   ) {}
 
   get basicoForm() {
@@ -210,6 +212,9 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
   voltarFormVisivel(): void {
     this.formVisivel--;
+    if (this.formVisivel < 0) {
+      this.navegacaoService.voltar();
+    }
     this.formVisivel = Math.max(this.formVisivel, 0);
   }
 
