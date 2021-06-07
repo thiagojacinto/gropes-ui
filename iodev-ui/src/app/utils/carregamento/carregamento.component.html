@@ -1,0 +1,19 @@
+<!-- <div *ngIf="(carregamento$ | async)">
+  <p-progressSpinner></p-progressSpinner>
+</div> -->
+
+<p-dialog
+  header="Carregando ..."
+  [(visible)]="isCarregando"
+  [closable]="false"
+  [blockScroll]="false"
+  [modal]="true"
+>
+  <p-progressSpinner
+    [style]="{ width: '40vw', height: '40vw' }"
+    styleClass="carregando-spinner"
+    strokeWidth="8"
+    fill="#EEEEEE"
+    animationDuration=".5s"
+  ></p-progressSpinner>
+</p-dialog>
