@@ -254,6 +254,11 @@
           "aplicacaoPratica": 3
         }
       ]
+    },
+    {
+      "id": 51,
+      "empresaUsuarioItens": [],
+      "tecnologiasUsuario": []
     }
   ]
 }
