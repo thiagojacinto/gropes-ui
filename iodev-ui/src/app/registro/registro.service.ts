@@ -27,7 +27,7 @@ export class RegistroService {
     }
     
     const registroValido = this.validarRegistro(registro);
-    console.log(`[INFO] > > > POST registrarUsuario: ${JSON.stringify(registroValido)}`);
+    // console.log(`[INFO] > > > POST registrarUsuario: ${JSON.stringify(registroValido)}`);
     return this.http.post<any>(baseUrl, registroValido);
   }
 }

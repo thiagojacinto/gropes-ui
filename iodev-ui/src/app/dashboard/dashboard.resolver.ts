@@ -23,7 +23,7 @@ export class DashboardResolver implements Resolve<Observable<any>> {
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<HttpResponse<any> | HttpErrorResponse> {
     const id = route.paramMap.get('uid')
-    console.log(`ID = ${id}`);
+    // console.log(`ID = ${id}`);
     return this.dashboardService.obterUsuarioPorId(Number(id))
       .pipe(catchError((error: Observable<HttpErrorResponse>) => {
         this.router.navigate(['/erro404']);

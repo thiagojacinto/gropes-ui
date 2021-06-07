@@ -264,7 +264,6 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registrarUsuario.value);
     this.verificarErroNoPreenchimento();
     if (!this.isDisabled()) {
       this.enviarRegistro();
