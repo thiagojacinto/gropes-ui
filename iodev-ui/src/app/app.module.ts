@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './paginas/header/header.module';
 import { PaginasModule } from './paginas/paginas.module';
 import { BotaoVoltarDirective } from './utils/botao-voltar-directive.directive';
+import { CarregamentoModule } from './utils/carregamento/carregamento.module';
 
 @NgModule({
   declarations: [AppComponent, BotaoVoltarDirective],
@@ -20,6 +21,7 @@ import { BotaoVoltarDirective } from './utils/botao-voltar-directive.directive';
     RouterModule,
     HeaderModule,
     PaginasModule,
+    CarregamentoModule
   ],
   providers: [],
   bootstrap: [AppComponent],
