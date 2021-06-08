@@ -8,7 +8,7 @@
     </span>
   </ng-template>
   <ng-template pTemplate="content" ngFor let-item>
-    <p-card class="p-m-sm-3" [header]="item.tecnologia" subheader="{{ item.contatoDesde | date:'MMMM, y' }}">
+    <p-card class="p-m-sm-3" [header]="item.tecnologia" subheader="{{ item.contatoDesde | date:'MMMM, y' : 'pt'}}">
       <app-item [item]="item"></app-item>
     </p-card>
   </ng-template>
