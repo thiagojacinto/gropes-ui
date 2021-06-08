@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "iodev-ui": {
+      "i18n": {
+        "sourceLocale": "pt"
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -45,6 +48,9 @@
           },
           "configurations": {
             "production": {
+              "localize" : [
+                "pt"
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
