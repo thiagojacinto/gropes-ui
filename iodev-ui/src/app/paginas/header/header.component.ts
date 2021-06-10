@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Análise',
         icon: PrimeIcons.CHART_LINE,
-        routerLink: ['/dashboard/5'],
+        routerLink: ['/dashboard/13'],
       },
       {
         label: 'Sobre',
