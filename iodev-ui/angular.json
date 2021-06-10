@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "iodev-ui": {
+      "i18n": {
+        "sourceLocale": "pt"
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,16 +20,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": false,
             "outputPath": "dist/iodev-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.css",
               "primeng/resources/themes/nova/theme.css",
@@ -38,10 +39,7 @@
               "node_modules/inputmask/dist/inputmask.js",
               "node_modules/chart.js/dist/Chart.js"
             ],
-            "allowedCommonJsDependencies": [
-              "inputmask",
-              "chart.js"
-            ]
+            "allowedCommonJsDependencies": ["inputmask", "chart.js"]
           },
           "configurations": {
             "production": {

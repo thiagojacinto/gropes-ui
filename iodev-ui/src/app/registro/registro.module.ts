@@ -16,10 +16,11 @@ import { CardModule } from 'primeng/card';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { TooltipModule } from 'primeng/tooltip';
-import {DividerModule} from 'primeng/divider';
+import { DividerModule } from 'primeng/divider';
 
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { DateMaskDirective } from '../utils/data-mask.directive';
+import { RegistroRoutingModule } from './registro-routing.module';
 
 @NgModule({
   declarations: [RegistrarUsuarioComponent, DateMaskDirective],
@@ -28,6 +29,7 @@ import { DateMaskDirective } from '../utils/data-mask.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RegistroRoutingModule,
     InputTextModule,
     InputMaskModule,
     PasswordModule,
@@ -41,7 +43,7 @@ import { DateMaskDirective } from '../utils/data-mask.directive';
     MessageModule,
     MessagesModule,
     TooltipModule,
-    DividerModule
+    DividerModule,
   ],
   exports: [RegistrarUsuarioComponent],
 })

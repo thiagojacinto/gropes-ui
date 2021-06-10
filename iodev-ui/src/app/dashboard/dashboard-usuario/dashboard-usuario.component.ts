@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-usuario',
@@ -10,7 +10,7 @@ export class DashboardUsuarioComponent implements OnInit {
   dados: any;
   avisoDisponibilidade = false;
 
-  constructor(private activRoute: ActivatedRoute) {}
+  constructor(private activRoute: ActivatedRoute, private router: Router) {}
 
   maisInfo(): void {
     console.log('[INFO] CLICK at Mais info sobre!');
@@ -20,12 +20,17 @@ export class DashboardUsuarioComponent implements OnInit {
     console.log('[INFO] CLICK at Editar perfil!');
     this.funcionalidadeIndisponivel()
   }
+  isUsuarioVazio(): boolean { 
+    const verify = this.dados.tecnologiasUsuario.length === 0 && this.dados.empresaUsuarioItens.length === 0
+    return verify
+  }
 
   ngOnInit(): void {
     this.activRoute.data.subscribe(
       () => {
         this.dados = this.activRoute.snapshot.data['dados'];
-        console.log(this.dados);
+        // console.log(this.dados);
+        this.isUsuarioVazio() && this.router.navigate(['/erro404']);
       },
       (error) => console.error(error)
     );

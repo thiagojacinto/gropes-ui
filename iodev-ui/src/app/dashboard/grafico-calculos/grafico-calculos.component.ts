@@ -27,12 +27,11 @@ export class GraficoCalculosComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.score) {
       this.percentual = this.calcularPercentualScore(this.score);
-      console.log(`[INFO] CHANGE of SCORE: ${this.score}`);
-      console.log(`[INFO] IMPACT in PERCENTUAL to: ${this.percentual}`);
+      // console.log(`[INFO] CHANGE of SCORE: ${this.score}`);
+      // console.log(`[INFO] IMPACT in PERCENTUAL to: ${this.percentual}`);
 
       this.dados.datasets[0].data = [100 - this.percentual, this.percentual];
-      // this.dados.datasets[0].data = [100 - 45.9, 45.9];
-      console.log(`[INFO] UPDATE dataset of SCORE...`);
+      // console.log(`[INFO] UPDATE dataset of SCORE...`);
     }
   }
 
